@@ -1,7 +1,7 @@
 // angular
 import { NgModule } from '@angular/core';
 
-//providers
+// providers
 import { TENANT_PROVIDERS } from './services/index';
 
 @NgModule({

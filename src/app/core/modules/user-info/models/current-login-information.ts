@@ -6,7 +6,7 @@ export class CurrentLoginInformation {
 
 export class ApplicationInfoDto {
     version?: string;
-    releaseDate?: string;;
+    releaseDate?: string;
     features;
 }
 

@@ -8,10 +8,10 @@ export class RoleDto {
     id?: number;
 
     constructor() {
-        this.name = "";
-        this.displayName = "";
+        this.name = '';
+        this.displayName = '';
         this.permissions = [];
-        this.description = "";
+        this.description = '';
     }
 }
 

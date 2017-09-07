@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../core/ngrx/index';
 import * as userActions from '../../core/modules/user/actions';
@@ -42,9 +42,9 @@ export class UserPageComponent implements OnInit {
         this.store.dispatch({ type: userActions.GET_ROLES });
     }
 
-    //open user modal and pass the selected user if exists
+    // open user modal and pass the selected user if exists
     open(user?) {
-        user = user ? Object.assign({}, user) : new CreateUserDto();;
+        user = user ? Object.assign({}, user) : new CreateUserDto();
         this.userEditModal.open(user);
     }
 
@@ -52,11 +52,11 @@ export class UserPageComponent implements OnInit {
         this.store.dispatch({
             type: user.id ? userActions.UPDATE_USER : userActions.ADD_USER,
             payload: user,
-        })
+        });
     }
 
     delete(user) {
-        //if the selected user is current user, logout after deleting the user
+        // if the selected user is current user, logout after deleting the user
         let isCurrentUser: boolean = false;
         this.userLoginInfo$.forEach(currentUser => {
             if (currentUser.id === user.id) {

@@ -3,4 +3,5 @@ export * from './actions/index';
 export * from './effects/index';
 export * from './reducers/index';
 export * from './models/index';
-export * from './role.module'
+export * from './role.module';
+

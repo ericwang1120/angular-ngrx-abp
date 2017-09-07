@@ -79,13 +79,8 @@ const DLL_VENDORS = [
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
   '@angular/router',
-  '@ngrx/core',
-  '@ngrx/core/add/operator/select.js',
   '@ngrx/effects',
-  '@ngrx/router-store',
   '@ngrx/store',
-  '@ngrx/store-devtools',
-  '@ngrx/store-log-monitor',
   '@ng-bootstrap/ng-bootstrap',
   'ngrx-store-freeze',
   'ngrx-store-logger',
@@ -96,7 +91,7 @@ const DLL_VENDORS = [
 const COPY_FOLDERS = [
   { from: 'src/assets', to: 'assets' },
   { from: 'src/app/styles.css' },
-  { from: 'node_modules/font-awesome',to: 'font-awesome' },  
+  { from: 'node_modules/font-awesome', to: 'font-awesome' },
   ...MY_COPY_FOLDERS
 ];
 

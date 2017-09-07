@@ -16,15 +16,15 @@ export class UserInfoService {
     }
 
     getGrantedPermission(): Observable<Permission[]> {
-        return this.http.get(HOST_URL + "/AbpUserConfiguration/GetAll", this.jwt())
-            .map(result => result.json()["result"]["auth"]["grantedPermissions"])
+        return this.http.get(HOST_URL + '/AbpUserConfiguration/GetAll', this.jwt())
+            .map(result => result.json()['result']['auth']['grantedPermissions'])
             .map(permissionDict => {
                 let result: Permission[] = [];
                 for (let key in permissionDict) {
                     if (permissionDict.hasOwnProperty(key)) {
                         result.push({
                             PermissionName: key,
-                            isGranted: permissionDict[key] == "true" ? true : false
+                            isGranted: permissionDict[key] === 'true' ? true : false
                         });
                     }
                 }
@@ -33,8 +33,9 @@ export class UserInfoService {
     }
 
     getCurrentLoginInformation(): Observable<Permission[]> {
-        return this.http.get(HOST_URL + "/api/services/app/Session/GetCurrentLoginInformations", this.jwt())
-            .map(result => result.json()["result"]);
+        return this.http.get(
+            HOST_URL + '/api/services/app/Session/GetCurrentLoginInformations', this.jwt())
+            .map(result => result.json()['result']);
     }
 
     private handleError(error: Response | any) {

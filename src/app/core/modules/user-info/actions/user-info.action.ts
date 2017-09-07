@@ -6,7 +6,8 @@ import { Permission, CurrentLoginInformation } from '../models';
 export const LOAD_GRANTED_PERMISSIONS = '[UserInfo] Load Granted Permissions';
 export const LOAD_GRANTED_PERMISSIONS_SUCCESS = '[UserInfo] Load Granted Permissions Success';
 export const GET_CURRENT_LOGIN_INFORMATION = '[UserInfo] Get Current Login Information';
-export const GET_CURRENT_LOGIN_INFORMATION_SUCCESS = '[UserInfo] Get Current Login Information Success';
+export const GET_CURRENT_LOGIN_INFORMATION_SUCCESS
+  = '[UserInfo] Get Current Login Information Success';
 export const FAIL = '[UserInfo] Fail';
 
 export class LoadGrantPermissions implements Action {
@@ -38,4 +39,4 @@ export type All
   | LoadGrantPermissionsSuccess
   | GetCurrentLoginInformation
   | GetCurrentLoginInformationSuccess
-  | Fail
+  | Fail;

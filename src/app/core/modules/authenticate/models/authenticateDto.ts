@@ -3,8 +3,8 @@ export class AuthenticateDto {
     password: string;
     rememberClient?: boolean;
 
-    constructor(){
-        this.userNameOrEmailAddress="";
-        this.password="";
+    constructor() {
+        this.userNameOrEmailAddress = '';
+        this.password = '';
     }
 }

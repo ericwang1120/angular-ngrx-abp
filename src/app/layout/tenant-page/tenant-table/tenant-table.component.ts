@@ -13,7 +13,7 @@ export class TenantTableComponent implements OnInit {
     @Input('tenantList') tenantList: TenantDto[];
     @Output() open = new EventEmitter();
     @Output() delete = new EventEmitter();
-    
+
     constructor() {
     }
     ngOnInit() { }

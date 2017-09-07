@@ -25,6 +25,10 @@ export class UserEditModalComponent {
     password: FormControl;
     confirmPassword: FormControl;
 
+    modalTitle: string;
+    selectedUser: UserDto;
+    isUpdating: boolean;
+
     constructor(private modalService: NgbModal) {
 
     }
@@ -37,7 +41,7 @@ export class UserEditModalComponent {
         this.surname = new FormControl('', Validators.required);
         this.emailAddress = new FormControl('', [
             Validators.required,
-            Validators.pattern("[^ @]*@[^ @]*")
+            Validators.pattern('[^ @]*@[^ @]*')
         ]);
         this.password = new FormControl('', [
             Validators.required,
@@ -66,11 +70,8 @@ export class UserEditModalComponent {
 
     }
 
-    private modalTitle: string;
-    private selectedUser: UserDto;
-    private isUpdating: boolean;
     open(user?) {
-        this.modalTitle = user.id ? "Update User" : "Create User";
+        this.modalTitle = user.id ? 'Update User' : 'Create User';
         this.isUpdating = user.id ? true : false;
         this.selectedUser = user;
         this.modalService.open(this.modal);
@@ -78,10 +79,10 @@ export class UserEditModalComponent {
         this.createForm(this.isUpdating);
     }
 
-    //prevent "expression-has-changed-after-it-was-checked-error"
+    // prevent "expression-has-changed-after-it-was-checked-error"
     get isValidForm() {
         if (this.isUpdating) {
-           return this.userDetailsForm.dirty ? this.userDetailsForm.valid : true;
+            return this.userDetailsForm.dirty ? this.userDetailsForm.valid : true;
         }
         return this.userDetailsForm.valid;
     }
@@ -89,18 +90,16 @@ export class UserEditModalComponent {
     get rolesWithGrantedStatus() {
         let selectedRoles = this.selectedUser.roleNames;
         return this.allRoles.map(role => {
-            if (selectedRoles.indexOf(role.normalizedName) != -1) {
+            if (selectedRoles.indexOf(role.normalizedName) !== -1) {
                 return Object.assign({}, role, { granted: true });
             }
-            else {
-                return Object.assign({}, role, { granted: false });
-            }
+            return Object.assign({}, role, { granted: false });
         });
     }
 
     selectRole(selectedRole) {
         let index = this.selectedUser.roleNames.indexOf(selectedRole.normalizedName);
-        if (index == -1) {
+        if (index === -1) {
             this.selectedUser.roleNames = [
                 ...this.selectedUser.roleNames,
                 selectedRole.normalizedName
@@ -108,8 +107,8 @@ export class UserEditModalComponent {
         } else {
             this.selectedUser.roleNames =
                 this.selectedUser.roleNames.filter(role =>
-                    role != selectedRole.normalizedName
-                )
+                    role !== selectedRole.normalizedName
+                );
         }
     }
 }

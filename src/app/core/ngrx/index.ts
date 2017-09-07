@@ -7,8 +7,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 
 import { createSelector } from 'reselect';
 
-//different modules
-import * as fromFlavor from '../modules/flavor';
+// different modules
 import * as fromAuthenticate from '../modules/authenticate';
 import * as fromUserInfo from '../modules/user-info';
 import * as fromRole from '../modules/role';
@@ -16,16 +15,14 @@ import * as fromTenant from '../modules/tenant';
 import * as fromUser from '../modules/user';
 
 export interface AppState {
-    flavor: fromFlavor.FlavorState;
     authenticate: fromAuthenticate.AuthenticateState;
     userInfo: fromUserInfo.UserInfoState;
     role: fromRole.RoleState;
     tenant: fromTenant.TenantState;
     user: fromUser.UserState;
-};
+}
 
 export const reducers: ActionReducerMap<AppState> = {
-    flavor: fromFlavor.reducer,
     authenticate: fromAuthenticate.reducer,
     userInfo: fromUserInfo.reducer,
     role: fromRole.reducer,
@@ -52,37 +49,36 @@ export function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
     };
 }
 
-export const metaReducers = 'production'===ENV ? [] : [logger, storeFreeze, stateSetter];
+export const metaReducers = 'production' === ENV ? [] : [logger, storeFreeze, stateSetter];
 
-//Flavor List
-export const getFlavorState = (state: AppState) => state.flavor;
-export const getFlavorList = createSelector(getFlavorState, fromFlavor.getFlavorList);
-export const getFlavorListLoading = createSelector(getFlavorState, fromFlavor.getFlavorListLoading);
-
-//Authenticate List
+// Authenticate List
 export const getAuthenticateState = (state: AppState) => state.authenticate;
-export const getAuthenticateStatus = createSelector(getAuthenticateState, fromAuthenticate.getAuthenticateStatus);
-export const getAuthenticated = createSelector(getAuthenticateState, fromAuthenticate.getAuthenticated);
-export const getAuthenticateStatusLoading = createSelector(getAuthenticateState, fromAuthenticate.getAuthenticateStateLoading);
+export const getAuthenticateStatus
+    = createSelector(getAuthenticateState, fromAuthenticate.getAuthenticateStatus);
+export const getAuthenticated
+    = createSelector(getAuthenticateState, fromAuthenticate.getAuthenticated);
+export const getAuthenticateStatusLoading
+    = createSelector(getAuthenticateState, fromAuthenticate.getAuthenticateStateLoading);
 
-//User info list
+// User info list
 export const getUserInfoState = (state: AppState) => state.userInfo;
-export const getGrantedPermissionList = createSelector(getUserInfoState, fromUserInfo.getGrantedPermissionList);
+export const getGrantedPermissionList
+ = createSelector(getUserInfoState, fromUserInfo.getGrantedPermissionList);
 export const getUserLoginInfo = createSelector(getUserInfoState, fromUserInfo.getUserLoginInfo);
 export const getUserInfoLoading = createSelector(getUserInfoState, fromUserInfo.getUserInfoLoading);
 
-//Roles
+// Roles
 export const getRoleState = (state: AppState) => state.role;
 export const getRoleList = createSelector(getRoleState, fromRole.getRoleList);
 export const getAllPermissions = createSelector(getRoleState, fromRole.getAllPermissions);
 export const getRoleListLoading = createSelector(getRoleState, fromRole.getRoleListLoading);
 
-//Tenants
+// Tenants
 export const getTenantState = (state: AppState) => state.tenant;
 export const getTenantList = createSelector(getTenantState, fromTenant.getTenantList);
 export const getTenantListLoading = createSelector(getTenantState, fromTenant.getTenantListLoading);
 
-//Users
+// Users
 export const getUserState = (state: AppState) => state.user;
 export const getUserList = createSelector(getUserState, fromUser.getUserList);
 export const getRoles = createSelector(getUserState, fromUser.getRoles);

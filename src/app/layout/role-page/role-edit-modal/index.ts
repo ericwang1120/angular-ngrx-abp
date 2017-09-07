@@ -1,1 +1,1 @@
-export * from './role-edit-modal.component'
+export * from './role-edit-modal.component';

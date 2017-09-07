@@ -11,10 +11,6 @@ import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class TenantEffects {
-    constructor(
-        private action$: Actions,
-        private service: TenantService,
-    ) { }
 
     @Effect() loadTenants$ = this.action$.ofType(TenantActions.LOAD_TENANTS)
         .switchMap(() =>
@@ -35,21 +31,29 @@ export class TenantEffects {
         .map(toPayload)
         .mergeMap(tenant =>
             this.service.updateTenant(tenant)
-                .map(tenant => ({ type: TenantActions.UPDATE_TENANT_SUCCESS, payload: tenant }))
+                .map(updatedTenant =>
+                    ({ type: TenantActions.UPDATE_TENANT_SUCCESS, payload: updatedTenant }))
                 .catch(() => of({ type: TenantActions.FAIL }))
         );
 
     @Effect() addTenant$ = this.action$.ofType(TenantActions.ADD_TENANT)
         .map(toPayload)
         .mergeMap(tenant => this.service.createTenant(tenant)
-            .map(tenant => ({ type: TenantActions.ADD_TENANT_SUCCESS, payload: tenant }))
+            .map(createdTenant =>
+                ({ type: TenantActions.ADD_TENANT_SUCCESS, payload: createdTenant }))
             .catch(() => of({ type: TenantActions.FAIL }))
         );
 
     @Effect() deleteTenant$ = this.action$.ofType(TenantActions.DELETE_TENANT)
         .map(toPayload)
         .mergeMap(tenant => this.service.deleteTenant(tenant)
-            .map(tenant => ({ type: TenantActions.DELETE_TENANT_SUCCESS, payload: tenant }))
+            .map(deletedTenant =>
+                ({ type: TenantActions.DELETE_TENANT_SUCCESS, payload: deletedTenant }))
             .catch(() => of({ type: TenantActions.FAIL }))
         );
-}   
+
+    constructor(
+        private action$: Actions,
+        private service: TenantService,
+    ) { }
+}

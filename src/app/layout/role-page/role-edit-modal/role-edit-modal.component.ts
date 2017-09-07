@@ -14,14 +14,13 @@ export class RoleEditModalComponent {
     @Output() submit = new EventEmitter();
 
     closeResult: string;
+    modalTitle: string;
+    selectedRole: RoleDto;
 
     constructor(private modalService: NgbModal) { }
 
-    private modalTitle: string;
-    private selectedRole: RoleDto;
-
     open(role?) {
-        this.modalTitle = role.id ? "Update Role" : "Create Role";
+        this.modalTitle = role.id ? 'Update Role' : 'Create Role';
         this.selectedRole = role;
         this.modalService.open(this.modal);
     }
@@ -29,18 +28,16 @@ export class RoleEditModalComponent {
     get permissionsWithGrantedStatus() {
         let selectedPermissions = this.selectedRole.permissions;
         return this.allPermissions.map(permission => {
-            if (selectedPermissions.indexOf(permission.name) != -1) {
+            if (selectedPermissions.indexOf(permission.name) !== -1) {
                 return Object.assign({}, permission, { granted: true });
             }
-            else {
-                return Object.assign({}, permission, { granted: false });
-            }
+            return Object.assign({}, permission, { granted: false });
         });
     }
 
     selectPermission(selectedPermission) {
         let index = this.selectedRole.permissions.indexOf(selectedPermission.name);
-        if (index == -1) {
+        if (index === -1) {
             this.selectedRole.permissions = [
                 ...this.selectedRole.permissions,
                 selectedPermission.name
@@ -48,8 +45,7 @@ export class RoleEditModalComponent {
         } else {
             this.selectedRole.permissions =
                 this.selectedRole.permissions.filter(permission =>
-                    permission != selectedPermission.name
-                )
+                    permission !== selectedPermission.name);
         }
     }
 

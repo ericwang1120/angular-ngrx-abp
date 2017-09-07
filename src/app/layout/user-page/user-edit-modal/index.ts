@@ -1,1 +1,1 @@
-export * from './user-edit-modal.component'
+export * from './user-edit-modal.component';

@@ -13,16 +13,18 @@ export class AuthGuard implements CanActivate {
         private store: Store<AppState>
     ) { }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
+    canActivate(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
         return this.store.select(fromRoot.getAuthenticateStatus)
             .map((authenticateStatus) => {
-                if (authenticateStatus.expireTime>new Date().getTime()) {
+                if (authenticateStatus.expireTime > new Date().getTime()) {
                     return true;
                 } else {
                     this.router.navigate(['/login']);
                     return false;
                 }
-            })
+            });
     }
 
 }

@@ -1,1 +1,1 @@
-export * from './tenant-edit-modal.component'
+export * from './tenant-edit-modal.component';

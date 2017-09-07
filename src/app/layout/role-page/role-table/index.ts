@@ -1,1 +1,1 @@
-export * from './role-table.component'
+export * from './role-table.component';

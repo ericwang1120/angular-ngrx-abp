@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { Observable } from 'rxjs/Observable';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../core/ngrx/index';
-import * as flavorActions from '../../core/modules/flavor/actions';
 
 
 @Component({
@@ -20,9 +19,9 @@ export class DashboardComponent implements OnInit {
     flavors$: Observable<any>;
 
     constructor(
-        //private store: Store<fromRoot.AppState>,
+        // private store: Store<fromRoot.AppState>,
     ) {
-        //this.flavors$ = store.select(fromRoot.getFlavorList);
+        // this.flavors$ = store.select(fromRoot.getFlavorList);
         this.sliders.push({
             imagePath: 'assets/images/slider1.jpg',
             label: 'First slide label',
@@ -55,7 +54,7 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-        //this.store.dispatch({ type: flavorActions.LOAD_FLAVORS });
+        // this.store.dispatch({ type: flavorActions.LOAD_FLAVORS });
     }
 
     public closeAlert(alert: any) {

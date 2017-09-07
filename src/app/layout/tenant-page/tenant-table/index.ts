@@ -1,1 +1,1 @@
-export * from './tenant-table.component'
+export * from './tenant-table.component';

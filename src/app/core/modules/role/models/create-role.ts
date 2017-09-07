@@ -7,10 +7,10 @@ export class CreateRoleDto {
     permissions?: string[];
 
     constructor() {
-        this.name = "";
-        this.displayName = "";
-        this.normalizedName = "";
-        this.description = "";
+        this.name = '';
+        this.displayName = '';
+        this.normalizedName = '';
+        this.description = '';
         this.permissions = [];
     }
 }

@@ -32,7 +32,7 @@ export function reducer(state = initialState, action: Action): RoleState {
             return Object.assign({}, state, {
                 loading: toPayload(action),
             });
-        };
+        }
 
         case RoleActions.LOAD_ROLES_SUCCESS: {
             return Object.assign({}, state, {
@@ -40,28 +40,28 @@ export function reducer(state = initialState, action: Action): RoleState {
                 totalCount: toPayload(action).totalCount,
                 loading: false
             });
-        };
+        }
 
         case RoleActions.LOAD_ALL_PERMISSIONS_SUCCESS: {
             return Object.assign({}, state, {
                 allPermissions: toPayload(action).items,
                 loading: false
             });
-        };
+        }
 
         case RoleActions.GET_ROLE_SUCCESS: {
             return Object.assign({}, state, {
                 role: toPayload(action),
                 loading: false
             });
-        };
+        }
 
         case RoleActions.ADD_ROLE_SUCCESS: {
             return Object.assign({}, state, {
                 roles: [...state.roles, toPayload(action)],
                 loading: false
             });
-        };
+        }
 
         case RoleActions.UPDATE_ROLE_SUCCESS: {
             let index = _.findIndex(state.roles, { id: toPayload(action).id });
@@ -78,24 +78,24 @@ export function reducer(state = initialState, action: Action): RoleState {
                 });
             }
             return Object.assign({}, state, { loading: false });
-        };
+        }
 
         case RoleActions.DELETE_ROLE_SUCCESS: {
             return Object.assign({}, state, {
-                roles: state.roles.filter(role => role.id != toPayload(action).id),
+                roles: state.roles.filter(role => role.id !== toPayload(action).id),
                 loading: false
             });
-        };
+        }
 
         case RoleActions.FAIL: {
             return Object.assign({}, state, {
                 loading: false
             });
-        };
+        }
 
         default: {
             return state;
-        };
+        }
     }
 }
 

@@ -11,11 +11,6 @@ import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class UserEffects {
-    constructor(
-        private action$: Actions,
-        private service: UserService,
-    ) { }
-
     @Effect() loadUsers$ = this.action$.ofType(UserActions.LOAD_USERS)
         .switchMap(() =>
             this.service.loadUsers()
@@ -42,9 +37,9 @@ export class UserEffects {
         .map(toPayload)
         .mergeMap(user =>
             this.service.updateUser(user)
-                .mergeMap(user => (
+                .mergeMap(updatedUser => (
                     Observable.from([
-                        { type: UserActions.UPDATE_USER_SUCCESS, payload: user },
+                        { type: UserActions.UPDATE_USER_SUCCESS, payload: updatedUser },
                         { type: UserInfoActions.LOAD_GRANTED_PERMISSIONS },
                         { type: UserInfoActions.GET_CURRENT_LOGIN_INFORMATION }
                     ])
@@ -55,9 +50,9 @@ export class UserEffects {
     @Effect() addUser$ = this.action$.ofType(UserActions.ADD_USER)
         .map(toPayload)
         .mergeMap(user => this.service.createUser(user)
-            .mergeMap(user => (
+            .mergeMap(createdUser => (
                 Observable.from([
-                    { type: UserActions.ADD_USER_SUCCESS, payload: user },
+                    { type: UserActions.ADD_USER_SUCCESS, payload: createdUser },
                     { type: UserInfoActions.LOAD_GRANTED_PERMISSIONS }
                 ])
             ))
@@ -67,12 +62,19 @@ export class UserEffects {
     @Effect() deleteUser$ = this.action$.ofType(UserActions.DELETE_USER)
         .map(toPayload)
         .mergeMap(user => this.service.deleteUser(user)
-            .mergeMap(user =>
+            .mergeMap(deletedUser =>
                 Observable.from([
-                    { type: UserActions.DELETE_USER_SUCCESS, payload: user },
+                    { type: UserActions.DELETE_USER_SUCCESS, payload: deletedUser },
                     { type: UserInfoActions.LOAD_GRANTED_PERMISSIONS }
                 ])
             )
             .catch(() => of({ type: UserActions.FAIL }))
         );
-}   
+
+    constructor(
+        private action$: Actions,
+        private service: UserService,
+    ) { }
+
+}
+

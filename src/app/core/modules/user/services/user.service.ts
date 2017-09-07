@@ -17,33 +17,35 @@ export class UserService {
     }
 
     loadUsers(): Observable<PagedResultDtoOfUserDto[]> {
-        return this.http.get(API_URL + "/services/app/User/GetAll", this.jwt())
-            .map(result => result.json().result)
+        return this.http.get(API_URL + '/services/app/User/GetAll', this.jwt())
+            .map(result => result.json().result);
     }
 
     getUser(id): Observable<UserDto> {
-        return this.http.get(API_URL + "/services/app/User/Get?id=" + id, this.jwt())
-            .map(result => result.json().result)
+        return this.http.get(API_URL + '/services/app/User/Get?id=' + id, this.jwt())
+            .map(result => result.json().result);
     }
 
     createUser(createUserDto: CreateUserDto): Observable<UserDto> {
-        return this.http.post(API_URL + "/services/app/User/Create", JSON.stringify(createUserDto), this.jwt())
-            .map(result => result.json().result || {})
+        return this.http.post(
+            API_URL + '/services/app/User/Create', JSON.stringify(createUserDto), this.jwt())
+            .map(result => result.json().result || {});
     }
 
     deleteUser(user: UserDto): Observable<UserDto> {
         return this.http.delete(API_URL + `/services/app/User/Delete?id=${user.id}`, this.jwt())
-            .map(result => user)
+            .map(result => user);
     }
 
     updateUser(user: UserDto): Observable<UserDto> {
-        return this.http.put(API_URL + '/services/app/User/Update', JSON.stringify(user), this.jwt())
-            .map(result => user)
+        return this.http.put(
+            API_URL + '/services/app/User/Update', JSON.stringify(user), this.jwt())
+            .map(result => user);
     }
 
     getRoles(): Observable<RoleDto[]> {
         return this.http.get(API_URL + '/services/app/User/GetRoles', this.jwt())
-            .map(result => result.json().result)
+            .map(result => result.json().result);
     }
 
     private handleError(error: Response | any) {

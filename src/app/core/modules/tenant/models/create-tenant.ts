@@ -3,13 +3,13 @@ export class CreateTenantDto {
     name: string;
     adminEmailAddress: string;
     connectionString?: string;
-    isActive?: boolean
+    isActive?: boolean;
 
     constructor() {
-        this.tenancyName = "";
-        this.name = "";
-        this.adminEmailAddress = "";
-        this.connectionString = "";
+        this.tenancyName = '';
+        this.name = '';
+        this.adminEmailAddress = '';
+        this.connectionString = '';
         this.isActive = true;
     }
 }

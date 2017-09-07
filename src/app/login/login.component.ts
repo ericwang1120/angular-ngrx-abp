@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../core/ngrx/index';
 import * as authenticateActions from '../core/modules/authenticate/actions';
@@ -33,9 +33,9 @@ export class LoginComponent implements OnInit {
         this.store.dispatch({
             type: authenticateActions.AUTHENTICATE,
             payload: {
-                "userNameOrEmailAddress": userNameOrEmailAddress,
-                "password": password,
+                'userNameOrEmailAddress': userNameOrEmailAddress,
+                'password': password,
             },
-        })
+        });
     }
 }

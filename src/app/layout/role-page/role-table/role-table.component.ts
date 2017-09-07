@@ -13,7 +13,7 @@ export class RoleTableComponent implements OnInit {
     @Input('roleList') roleList: RoleDto[];
     @Output() open = new EventEmitter();
     @Output() delete = new EventEmitter();
-    
+
     constructor() {
     }
     ngOnInit() { }

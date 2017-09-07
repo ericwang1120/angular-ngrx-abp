@@ -1,7 +1,7 @@
 // angular
 import { NgModule } from '@angular/core';
 
-//providers
+// providers
 import { USER_INFO_PROVIDERS } from './services';
 
 @NgModule({

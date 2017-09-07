@@ -33,7 +33,7 @@ export function reducer(state = initialState, action: Action): UserState {
             return Object.assign({}, state, {
                 loading: toPayload(action),
             });
-        };
+        }
 
         case UserActions.LOAD_USERS_SUCCESS: {
             return Object.assign({}, state, {
@@ -41,28 +41,28 @@ export function reducer(state = initialState, action: Action): UserState {
                 totalCount: toPayload(action).totalCount,
                 loading: false
             });
-        };
+        }
 
         case UserActions.GET_ROLES_SUCCESS: {
             return Object.assign({}, state, {
                 roles: toPayload(action).items,
                 loading: false
             });
-        };
+        }
 
         case UserActions.GET_USER_SUCCESS: {
             return Object.assign({}, state, {
                 user: toPayload(action),
                 loading: false
             });
-        };
+        }
 
         case UserActions.ADD_USER_SUCCESS: {
             return Object.assign({}, state, {
                 users: [...state.users, toPayload(action)],
                 loading: false
             });
-        };
+        }
 
         case UserActions.UPDATE_USER_SUCCESS: {
             let index = _.findIndex(state.users, { id: toPayload(action).id });
@@ -79,24 +79,24 @@ export function reducer(state = initialState, action: Action): UserState {
                 });
             }
             return Object.assign({}, state, { loading: false });
-        };
+        }
 
         case UserActions.DELETE_USER_SUCCESS: {
             return Object.assign({}, state, {
-                users: state.users.filter(user => user.id != toPayload(action).id),
+                users: state.users.filter(user => user.id !== toPayload(action).id),
                 loading: false
             });
-        };
+        }
 
         case UserActions.FAIL: {
             return Object.assign({}, state, {
                 loading: false
             });
-        };
+        }
 
         default: {
             return state;
-        };
+        }
     }
 }
 

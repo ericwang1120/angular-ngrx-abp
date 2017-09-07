@@ -5,9 +5,9 @@ export class PermissionDto {
     id?: boolean;
 
     constructor() {
-        this.name = "";
-        this.displayName = "";
-        this.description = "";
+        this.name = '';
+        this.displayName = '';
+        this.description = '';
         this.id = null;
     }
 }

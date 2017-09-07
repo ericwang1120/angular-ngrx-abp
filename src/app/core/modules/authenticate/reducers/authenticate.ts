@@ -12,7 +12,13 @@ export interface AuthenticateState {
 }
 
 export const initialState: AuthenticateState = {
-    authenticateStatus: { accessToken: "", encryptedAccessToken: "", expireInSeconds: null, userId: null, expireTime: null },
+    authenticateStatus: {
+        accessToken: '',
+        encryptedAccessToken: '',
+        expireInSeconds: null,
+        userId: null,
+        expireTime: null
+    },
     authenticated: false,
     loading: false,
 };
@@ -52,7 +58,7 @@ export function reducer(state = initialState, action: Action): AuthenticateState
     }
 }
 
-//for selector
+// for selector
 export const getAuthenticateStatus = (state: AuthenticateState) => state.authenticateStatus;
 export const getAuthenticated = (state: AuthenticateState) => state.authenticated;
 export const getAuthenticateStateLoading = (state: AuthenticateState) => state.loading;

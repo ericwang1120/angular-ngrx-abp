@@ -16,28 +16,30 @@ export class TenantService {
     }
 
     loadTenants(): Observable<PagedResultDtoOfTenantDto[]> {
-        return this.http.get(API_URL + "/services/app/Tenant/GetAll", this.jwt())
-            .map(result => result.json().result)
+        return this.http.get(API_URL + '/services/app/Tenant/GetAll', this.jwt())
+            .map(result => result.json().result);
     }
 
     getTenant(id): Observable<TenantDto> {
-        return this.http.get(API_URL + "/services/app/Tenant/Get?id=" + id, this.jwt())
-            .map(result => result.json().result)
+        return this.http.get(API_URL + '/services/app/Tenant/Get?id=' + id, this.jwt())
+            .map(result => result.json().result);
     }
 
     createTenant(createTenantDto: CreateTenantDto): Observable<TenantDto> {
-        return this.http.post(API_URL + "/services/app/Tenant/Create", JSON.stringify(createTenantDto), this.jwt())
-            .map(result => result.json().result || {})
+        return this.http.post(
+            API_URL + '/services/app/Tenant/Create', JSON.stringify(createTenantDto), this.jwt())
+            .map(result => result.json().result || {});
     }
 
     deleteTenant(tenant: TenantDto): Observable<TenantDto> {
         return this.http.delete(API_URL + `/services/app/Tenant/Delete?id=${tenant.id}`, this.jwt())
-            .map(result => tenant)
+            .map(result => tenant);
     }
 
     updateTenant(tenant: TenantDto): Observable<TenantDto> {
-        return this.http.put(API_URL + '/services/app/Tenant/Update', JSON.stringify(tenant), this.jwt())
-            .map(result => tenant)
+        return this.http.put(
+            API_URL + '/services/app/Tenant/Update', JSON.stringify(tenant), this.jwt())
+            .map(result => tenant);
     }
 
     private handleError(error: Response | any) {

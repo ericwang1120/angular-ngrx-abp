@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../core/ngrx/index';
 import * as tenantActions from '../../core/modules/tenant/actions';
@@ -31,9 +31,9 @@ export class TenantPageComponent implements OnInit {
         this.store.dispatch({ type: tenantActions.LOAD_TENANTS });
     }
 
-    //open tenant modal and pass the selected tenant if exists
+    // open tenant modal and pass the selected tenant if exists
     open(tenant?) {
-        tenant = tenant ? Object.assign({}, tenant) : new CreateTenantDto();;
+        tenant = tenant ? Object.assign({}, tenant) : new CreateTenantDto();
         this.tenantEditModal.open(tenant);
     }
 
@@ -41,14 +41,14 @@ export class TenantPageComponent implements OnInit {
         this.store.dispatch({
             type: tenant.id ? tenantActions.UPDATE_TENANT : tenantActions.ADD_TENANT,
             payload: tenant,
-        })
+        });
     }
 
     delete(tenant) {
         this.store.dispatch({
             type: tenantActions.DELETE_TENANT,
             payload: tenant,
-        })
+        });
     }
 
 }

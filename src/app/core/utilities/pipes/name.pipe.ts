@@ -8,6 +8,6 @@ export class NamePipe implements PipeTransform {
             return array.filter(element => element.id === +args)
                 .map(element => element = element.name)[0];
         }
-        else return "";
+        return '';
     }
 }

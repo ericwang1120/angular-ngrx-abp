@@ -10,18 +10,16 @@ import { TenantDto } from '../../../core/modules/tenant/models';
 })
 export class TenantEditModalComponent {
     @ViewChild('content') modal;
-    
     @Output() submit = new EventEmitter();
 
     closeResult: string;
+    modalTitle: string;
+    selectedTenant: TenantDto;
 
     constructor(private modalService: NgbModal) { }
 
-    private modalTitle: string;
-    private selectedTenant: TenantDto;
-
     open(tenant?) {
-        this.modalTitle = tenant.id ? "Update Tenant" : "Create Tenant";
+        this.modalTitle = tenant.id ? 'Update Tenant' : 'Create Tenant';
         this.selectedTenant = tenant;
         this.modalService.open(this.modal);
     }

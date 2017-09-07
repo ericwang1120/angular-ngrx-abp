@@ -18,11 +18,12 @@ export class UserTableComponent implements OnInit {
     @Output() delete = new EventEmitter();
     @ViewChild('content') modal;
 
+    selectedUser: UserDto;
+
     constructor(private modalService: NgbModal) {
     }
     ngOnInit() { }
 
-    private selectedUser: UserDto;
     openDeleteModal(user) {
         this.selectedUser = user;
         this.modalService.open(this.modal);

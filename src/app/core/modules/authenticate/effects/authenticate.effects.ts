@@ -12,11 +12,6 @@ import { AuthenticateResultDto } from '../models/authenticateResultDto';
 
 @Injectable()
 export class AuthenticateEffects {
-    constructor(
-        private action$: Actions,
-        private service: AuthenticateService,
-        private router: Router
-    ) { }
 
     @Effect() authenticate$ = this.action$.ofType(AuthenticateActions.AUTHENTICATE)
         .map(toPayload)
@@ -24,10 +19,13 @@ export class AuthenticateEffects {
             this.service.authenticate(authenticateDto)
                 .map((authenticateResultDto: AuthenticateResultDto) => {
                     this.router.navigate(['/dashboard']);
-                    return { type: AuthenticateActions.AUTHENTICATE_SUCCESS, payload: authenticateResultDto }
+                    return {
+                        type: AuthenticateActions.AUTHENTICATE_SUCCESS,
+                        payload: authenticateResultDto
+                    };
                 }).catch(() => {
                     this.router.navigate(['/login']);
-                    return of({ type: AuthenticateActions.AUTHENTICATE_FAIL })
+                    return of({ type: AuthenticateActions.AUTHENTICATE_FAIL });
                 })
         );
 
@@ -36,10 +34,13 @@ export class AuthenticateEffects {
             this.service.logout()
                 .map((authenticateResultDto: AuthenticateResultDto) => {
                     this.router.navigate(['/login']);
-                    return { type: AuthenticateActions.LOGOUT_SUCCESS, payload: authenticateResultDto };
+                    return {
+                        type: AuthenticateActions.LOGOUT_SUCCESS,
+                        payload: authenticateResultDto
+                    };
                 }).catch(() => {
                     this.router.navigate(['/login']);
-                    return of({ type: AuthenticateActions.AUTHENTICATE_FAIL })
+                    return of({ type: AuthenticateActions.AUTHENTICATE_FAIL });
                 })
         );
 
@@ -48,13 +49,23 @@ export class AuthenticateEffects {
             this.service.loadFromCache()
                 .map((authenticateResultDto: AuthenticateResultDto) => {
                     if (authenticateResultDto.expireTime > new Date().getTime())
-                        return { type: AuthenticateActions.AUTHENTICATE_SUCCESS, payload: authenticateResultDto };
-                    return { type: AuthenticateActions.AUTHENTICATE_FAIL }
+                        return {
+                            type: AuthenticateActions.AUTHENTICATE_SUCCESS,
+                            payload: authenticateResultDto
+                        };
+                    return { type: AuthenticateActions.AUTHENTICATE_FAIL };
                 })
                 .catch(() => {
                     this.router.navigate(['/login']);
-                    return of({ type: AuthenticateActions.AUTHENTICATE_FAIL })
+                    return of({ type: AuthenticateActions.AUTHENTICATE_FAIL });
                 })
         );
+
+
+    constructor(
+        private action$: Actions,
+        private service: AuthenticateService,
+        private router: Router
+    ) { }
 
 }

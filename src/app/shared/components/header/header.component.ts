@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../../core/ngrx/index';
 import { UserLoginInfoDto } from '../../../core/modules/user-info/models/current-login-information';
@@ -40,6 +40,6 @@ export class HeaderComponent implements OnInit {
     }
 
     logout() {
-        this.store.dispatch({ type: authenticateActions.LOGOUT })
+        this.store.dispatch({ type: authenticateActions.LOGOUT });
     }
 }

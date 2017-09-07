@@ -29,7 +29,7 @@ export function reducer(state = initialState, action: Action): TenantState {
             return Object.assign({}, state, {
                 loading: toPayload(action),
             });
-        };
+        }
 
         case TenantActions.LOAD_TENANTS_SUCCESS: {
             return Object.assign({}, state, {
@@ -37,21 +37,21 @@ export function reducer(state = initialState, action: Action): TenantState {
                 totalCount: toPayload(action).totalCount,
                 loading: false
             });
-        };
+        }
 
         case TenantActions.GET_TENANT_SUCCESS: {
             return Object.assign({}, state, {
                 tenant: toPayload(action),
                 loading: false
             });
-        };
+        }
 
         case TenantActions.ADD_TENANT_SUCCESS: {
             return Object.assign({}, state, {
                 tenants: [...state.tenants, toPayload(action)],
                 loading: false
             });
-        };
+        }
 
         case TenantActions.UPDATE_TENANT_SUCCESS: {
             let index = _.findIndex(state.tenants, { id: toPayload(action).id });
@@ -68,24 +68,24 @@ export function reducer(state = initialState, action: Action): TenantState {
                 });
             }
             return Object.assign({}, state, { loading: false });
-        };
+        }
 
         case TenantActions.DELETE_TENANT_SUCCESS: {
             return Object.assign({}, state, {
-                tenants: state.tenants.filter(tenant => tenant.id != toPayload(action).id),
+                tenants: state.tenants.filter(tenant => tenant.id !== toPayload(action).id),
                 loading: false
             });
-        };
+        }
 
         case TenantActions.FAIL: {
             return Object.assign({}, state, {
                 loading: false
             });
-        };
+        }
 
         default: {
             return state;
-        };
+        }
     }
 }
 

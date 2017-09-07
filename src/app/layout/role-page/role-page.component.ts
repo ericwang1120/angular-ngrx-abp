@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../core/ngrx/index';
 import * as roleActions from '../../core/modules/role/actions';
@@ -34,9 +34,9 @@ export class RolePageComponent implements OnInit {
         this.store.dispatch({ type: roleActions.LOAD_ALL_PERMISSIONS });
     }
 
-    //open role modal and pass the selected role if exists
+    // open role modal and pass the selected role if exists
     open(role?) {
-        role = role ? Object.assign({}, role) : new CreateRoleDto();;
+        role = role ? Object.assign({}, role) : new CreateRoleDto();
         this.roleEditModal.open(role);
     }
 
@@ -44,14 +44,14 @@ export class RolePageComponent implements OnInit {
         this.store.dispatch({
             type: role.id ? roleActions.UPDATE_ROLE : roleActions.ADD_ROLE,
             payload: role,
-        })
+        });
     }
 
     delete(role) {
         this.store.dispatch({
             type: roleActions.DELETE_ROLE,
             payload: role,
-        })
+        });
     }
 
 }

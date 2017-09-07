@@ -8,13 +8,13 @@ export class CreateUserDto {
     password: string;
 
     constructor() {
-        this.userName = "";
-        this.name = "";
-        this.surname = "";
-        this.emailAddress = "";
+        this.userName = '';
+        this.name = '';
+        this.surname = '';
+        this.emailAddress = '';
         this.isActive = true;
         this.roleNames = [];
-        this.password = ""
+        this.password = '';
     }
 }
 
@@ -31,14 +31,14 @@ export class UserDto {
     id?: number;
 
     constructor() {
-        this.userName = "";
-        this.name = "";
-        this.surname = "";
-        this.emailAddress = "";
+        this.userName = '';
+        this.name = '';
+        this.surname = '';
+        this.emailAddress = '';
         this.isActive = true;
-        this.fullName = "";
-        this.lastLoginTime = "";
-        this.creationTime = "";
+        this.fullName = '';
+        this.lastLoginTime = '';
+        this.creationTime = '';
         this.roleNames = [];
     }
 }

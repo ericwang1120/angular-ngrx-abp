@@ -11,10 +11,6 @@ import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class RoleEffects {
-    constructor(
-        private action$: Actions,
-        private service: RoleService,
-    ) { }
 
     @Effect() loadRoles$ = this.action$.ofType(RoleActions.LOAD_ROLES)
         .switchMap(() =>
@@ -26,7 +22,8 @@ export class RoleEffects {
     @Effect() loadAllPermissions$ = this.action$.ofType(RoleActions.LOAD_ALL_PERMISSIONS)
         .switchMap(() =>
             this.service.loadAllPermissions()
-                .map(permissions => ({ type: RoleActions.LOAD_ALL_PERMISSIONS_SUCCESS, payload: permissions }))
+                .map(permissions => ({
+                     type: RoleActions.LOAD_ALL_PERMISSIONS_SUCCESS, payload: permissions }))
                 .catch(() => of({ type: RoleActions.FAIL }))
         );
 
@@ -42,9 +39,9 @@ export class RoleEffects {
         .map(toPayload)
         .mergeMap(role =>
             this.service.updateRole(role)
-                .mergeMap(role => (
+                .mergeMap(updatedRole => (
                     Observable.from([
-                        { type: RoleActions.UPDATE_ROLE_SUCCESS, payload: role },
+                        { type: RoleActions.UPDATE_ROLE_SUCCESS, payload: updatedRole },
                         { type: UserInfoActions.LOAD_GRANTED_PERMISSIONS }
                     ])
                 ))
@@ -54,9 +51,9 @@ export class RoleEffects {
     @Effect() addRole$ = this.action$.ofType(RoleActions.ADD_ROLE)
         .map(toPayload)
         .mergeMap(role => this.service.createRole(role)
-            .mergeMap(role => (
+            .mergeMap(createdRole => (
                 Observable.from([
-                    { type: RoleActions.ADD_ROLE_SUCCESS, payload: role },
+                    { type: RoleActions.ADD_ROLE_SUCCESS, payload: createdRole },
                     { type: UserInfoActions.LOAD_GRANTED_PERMISSIONS }
                 ])
             ))
@@ -66,12 +63,18 @@ export class RoleEffects {
     @Effect() deleteRole$ = this.action$.ofType(RoleActions.DELETE_ROLE)
         .map(toPayload)
         .mergeMap(role => this.service.deleteRole(role)
-            .mergeMap(role =>
+            .mergeMap(deletedRole =>
                 Observable.from([
-                    { type: RoleActions.DELETE_ROLE_SUCCESS, payload: role },
+                    { type: RoleActions.DELETE_ROLE_SUCCESS, payload: deletedRole },
                     { type: UserInfoActions.LOAD_GRANTED_PERMISSIONS }
                 ])
             )
             .catch(() => of({ type: RoleActions.FAIL }))
         );
-}   
+
+    constructor(
+        private action$: Actions,
+        private service: RoleService,
+    ) { }
+}
+

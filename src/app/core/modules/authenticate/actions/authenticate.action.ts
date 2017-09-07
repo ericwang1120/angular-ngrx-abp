@@ -47,4 +47,4 @@ export type All
   | Logout
   | LogoutSuccess
   | AuthenticateFail
-  | LoadFromCache
+  | LoadFromCache;
