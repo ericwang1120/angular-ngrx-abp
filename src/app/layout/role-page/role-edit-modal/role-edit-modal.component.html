@@ -1,0 +1,44 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{modalTitle}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+
+  <div class="modal-body">
+    <form role="form">
+      <div class="form-group">
+        <label class="form-control-label" for="name">Role Name</label>
+        <input name="name" [(ngModel)]="selectedRole.name" type="text" class="form-control" id="name">
+      </div>
+
+      <div class="form-group">
+        <label class="form-control-label" for="displayName">Display Name</label>
+        <input name="displayName" [(ngModel)]="selectedRole.displayName" type="text" class="form-control" id="displayName">
+      </div>
+
+      <div class="form-group">
+        <label class="form-control-label" for="description">Role Description</label>
+        <input name="description" [(ngModel)]="selectedRole.description" type="text" class="form-control" id="description">
+      </div>
+    </form>
+
+    <hr>
+    <h5>Permissions</h5>
+    <form role="permissions">
+      <div  (click)="selectPermission(permission)" *ngFor="let permission of permissionsWithGrantedStatus" class="form-check form-check-inline">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" [checked]="permission.granted" name="options" [value]="permission.name">
+            {{permission.displayName}}
+          </label>
+      </div>
+    </form>
+
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn" (click)="submit.emit(selectedRole);c('Close click')">Submit</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>

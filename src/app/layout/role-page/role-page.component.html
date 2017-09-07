@@ -1,0 +1,6 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Roles'"></app-page-header>
+    <i *ngIf="roleListLoading$|async" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+    <app-role-table *ngIf="!(roleListLoading$|async)" (open)="open($event)" (delete)="delete($event)" [roleList]="roleList$|async"> </app-role-table>
+    <app-role-edit-modal (submit)="submit($event)" [allPermissions]="allPermissions$|async" #roleEditModalComponent></app-role-edit-modal>
+</div>

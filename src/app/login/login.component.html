@@ -1,0 +1,22 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row">
+        <div class="col-md-4 push-md-4">
+            <img src="assets/images/logo.png" width="150px" class="user-avatar" />
+            <h1>SB Admin BS4 Angular4</h1>
+            <form role="form">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input [(ngModel)]="authenticateDto.userNameOrEmailAddress" type="text" class="form-control input-underline input-lg" id="" name="userNameOrEmailAddress" placeholder="Name Or EmailAddress">
+                    </div>
+
+                    <div class="form-group">
+                        <input [(ngModel)]="authenticateDto.password" name="password" type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                    </div>
+                </div>
+                <a class="btn rounded-btn" (click)="login(authenticateDto.userNameOrEmailAddress,authenticateDto.password)"> Log in </a>
+                &nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
+            </form>
+        </div>
+    </div>
+</div>

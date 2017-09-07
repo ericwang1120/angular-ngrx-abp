@@ -1,0 +1,40 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{modalTitle}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+
+  <div class="modal-body">
+    <form tenant="form" #tenantForm="ngForm">
+      <div class="form-group">
+        <label class="form-control-label" for="tenancyName">Tenancy Name *</label>
+        <input required name="tenancyName" [(ngModel)]="selectedTenant.tenancyName" type="text" class="form-control" id="tenancyName">
+      </div>
+
+      <div class="form-group">
+        <label class="form-control-label" for="name">Name *</label>
+        <input required name="name" [(ngModel)]="selectedTenant.name" type="text" class="form-control" id="name">
+      </div>
+
+      <div *ngIf="!selectedTenant.id" class="form-group">
+        <label class="form-control-label" for="adminEmailAddress">Admin Email Address *</label>
+        <input required name="adminEmailAddress" [(ngModel)]="selectedTenant.adminEmailAddress" type="text" class="form-control" id="adminEmailAddress">
+      </div>
+
+      <div class="form-group">
+        <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" [checked]="selectedTenant.isActive" name="options" [(ngModel)]="selectedTenant.isActive">
+              Active              
+            </label>
+      </div>
+    </form>
+
+  </div>
+
+  <div class="modal-footer">
+    <button [disabled]="!tenantForm.valid" type="button" class="btn" (click)="submit.emit(selectedTenant);c('Close click')">Submit</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>

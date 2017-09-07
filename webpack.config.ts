@@ -11,7 +11,7 @@ import {
   USE_DEV_SERVER_PROXY, DEV_SERVER_PROXY_CONFIG, DEV_SERVER_WATCH_OPTIONS,
   DEV_SOURCE_MAPS, PROD_SOURCE_MAPS, STORE_DEV_TOOLS,
   MY_COPY_FOLDERS, MY_POLYFILL_DLLS, MY_VENDOR_DLLS, MY_CLIENT_PLUGINS,
-  MY_CLIENT_PRODUCTION_PLUGINS, MY_CLIENT_RULES
+  MY_CLIENT_PRODUCTION_PLUGINS, MY_CLIENT_RULES, API_URL, HOST_URL
 } from './constants';
 
 const {
@@ -64,6 +64,8 @@ const CONSTANTS = {
   ENV: PROD ? JSON.stringify('production') : JSON.stringify('development'),
   HMR: HMR,
   HOST: JSON.stringify(HOST),
+  API_URL: JSON.stringify(API_URL),
+  HOST_URL: JSON.stringify(HOST_URL),
   PORT: PORT,
   STORE_DEV_TOOLS: JSON.stringify(STORE_DEV_TOOLS)
 };
@@ -94,6 +96,7 @@ const DLL_VENDORS = [
 const COPY_FOLDERS = [
   { from: 'src/assets', to: 'assets' },
   { from: 'src/app/styles.css' },
+  { from: 'node_modules/font-awesome',to: 'font-awesome' },  
   ...MY_COPY_FOLDERS
 ];
 
@@ -193,7 +196,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     );
     if (!E2E && !WATCH) {
       config.plugins.push(
-        new BundleAnalyzerPlugin({ analyzerPort: 5000 })
+        new BundleAnalyzerPlugin({ analyzerPort: 4300 })
       );
     }
   }

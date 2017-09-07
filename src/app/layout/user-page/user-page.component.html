@@ -1,0 +1,8 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Users'"></app-page-header>
+    <i *ngIf="userListLoading$|async" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+    <app-user-table [userLoginInfo]="userLoginInfo$|async" *ngIf="!(userListLoading$|async)" (open)="open($event)" (delete)="delete($event)"
+        [userList]="userList$|async">
+    </app-user-table>
+    <app-user-edit-modal (submit)="submit($event)" [allRoles]="allRoles$|async" #userEditModalComponent></app-user-edit-modal>
+</div>

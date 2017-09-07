@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col col-xl-12 col-lg-12">
+        <!-- 
+        <div class="card mb-3">
+            <div class="card-header">
+            Basic example
+        </div>
+        -->
+
+        <div class="card-block table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Role Name</th>
+                        <th>Display Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let role of roleList">
+                        <td>{{role.name}}</td>
+                        <td>{{role.displayName}}</td>
+                        <td>
+                            <div ngbDropdown class="d-inline-block">
+                                <i class="fa fa-bars fa-2x text-muted" ngbDropdownToggle></i>
+                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                    <button class="dropdown-item" (click)="open.emit(role)">Edit</button>
+                                    <button class="dropdown-item" (click)="delete.emit(role)">Delete</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <i class="fa fa-plus-circle fa-2x text-muted" (click)="open.emit()"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- 
+    </div>
+    -->
+</div>

@@ -1,0 +1,7 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Tenants'"></app-page-header>
+    <i *ngIf="tenantListLoading$|async" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+    <app-tenant-table *ngIf="!(tenantListLoading$|async)" (open)="open($event)" (delete)="delete($event)" [tenantList]="tenantList$|async">
+    </app-tenant-table>
+    <app-tenant-edit-modal (submit)="submit($event)" #tenantEditModalComponent></app-tenant-edit-modal>
+</div>

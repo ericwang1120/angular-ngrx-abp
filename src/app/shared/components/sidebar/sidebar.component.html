@@ -1,0 +1,22 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+    <ul class="list-group">
+        <div *ngFor="let menuItem of getMenuItemToDisplay(grantedPermissionList$|async)">
+            <!--has no child-->
+            <a *ngIf="!menuItem.childItems" [routerLink]="[menuItem.route]" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                {{menuItem.name}}
+            </a>
+            <div class="nested-menu" *ngIf="menuItem.childItems">
+                <a class="list-group-item" (click)="addExpandClass('pages')">
+                        <span><i class="fa" [ngClass]="{'fa-minus':showMenu === 'pages','fa-plus':showMenu !== 'pages'}"></i>&nbsp; {{ menuItem.name }}</span>
+                </a>
+                <li class="nested" [class.expand]="showMenu === 'pages'">
+                    <ul class="submenu">
+                        <li *ngFor="let childItem of menuItem.childItems">
+                            <a [routerLink]="[childItem.route]">{{ childItem.name }}</a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+    </ul>
+</nav>
