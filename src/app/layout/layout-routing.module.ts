@@ -6,6 +6,7 @@ const routes: Routes = [
     {
         path: '', component: LayoutComponent,
         children: [
+            { path: 'home', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'tenants', loadChildren: './tenant-page/tenant-page.module#TenantPageModule' },
             {
