@@ -3,9 +3,12 @@ const root = require('./helpers.js').root
 const ip = require('ip');
 
 exports.HOST = ip.address();
-exports.DEV_PORT = 3000;
+exports.DEV_PORT = 4200;
 exports.E2E_PORT = 4201;
 exports.PROD_PORT = 8088;
+exports.HOST_URL = 'http://localhost:5000';
+exports.STORAGE_URL = 'https://yummy-rabbit.000webhostapp.com/yummy-rabbit-api/public/storage';
+exports.API_URL = 'http://localhost:5000/api';
 
 /**
  * These constants set whether or not you will use proxy for Webpack DevServer
