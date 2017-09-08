@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { AuthenticateDto } from '../models/authenticateDto';
 import { AuthenticateResultDto } from '../models/authenticateResultDto';
+import { NotificationsService } from 'angular2-notifications';
 
 @Injectable()
 export class AuthenticateEffects {
@@ -19,11 +20,13 @@ export class AuthenticateEffects {
             this.service.authenticate(authenticateDto)
                 .map((authenticateResultDto: AuthenticateResultDto) => {
                     this.router.navigate(['/dashboard']);
+                    this.notificationsService.success('Authenticate Success');
                     return {
                         type: AuthenticateActions.AUTHENTICATE_SUCCESS,
                         payload: authenticateResultDto
                     };
                 }).catch(() => {
+                    this.notificationsService.error('Login Fail');
                     this.router.navigate(['/login']);
                     return of({ type: AuthenticateActions.AUTHENTICATE_FAIL });
                 })
@@ -34,6 +37,7 @@ export class AuthenticateEffects {
             this.service.logout()
                 .map((authenticateResultDto: AuthenticateResultDto) => {
                     this.router.navigate(['/login']);
+                    this.notificationsService.success('Logout Success');
                     return {
                         type: AuthenticateActions.LOGOUT_SUCCESS,
                         payload: authenticateResultDto
@@ -48,24 +52,27 @@ export class AuthenticateEffects {
         .switchMap(() =>
             this.service.loadFromCache()
                 .map((authenticateResultDto: AuthenticateResultDto) => {
-                    if (authenticateResultDto.expireTime > new Date().getTime())
+                    if (authenticateResultDto.expireTime > new Date().getTime()) {
+                        this.notificationsService.success('Login Success');
                         return {
                             type: AuthenticateActions.AUTHENTICATE_SUCCESS,
                             payload: authenticateResultDto
                         };
+                    }
                     return { type: AuthenticateActions.AUTHENTICATE_FAIL };
                 })
                 .catch(() => {
+                    this.notificationsService.error('Login Fail');
                     this.router.navigate(['/login']);
                     return of({ type: AuthenticateActions.AUTHENTICATE_FAIL });
                 })
         );
 
-
     constructor(
         private action$: Actions,
         private service: AuthenticateService,
-        private router: Router
+        private router: Router,
+        private notificationsService: NotificationsService
     ) { }
 
 }

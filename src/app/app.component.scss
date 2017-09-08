@@ -1,24 +1,4 @@
-@import 'variables';
-
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.nav>li {
-    position: relative;
-    display: block;
-    float: left;
-}
-
-
-#my-app-title, #my-nav-menu{
-  float: left;
-}
-
-#my-nav-menu {
-  @media screen and (min-width: $break-large) {
-    position: relative;
-    left: 14px;
-  }
+button{
+  position: absolute;
+  z-index: 999;  
 }

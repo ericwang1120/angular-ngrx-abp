@@ -19,7 +19,6 @@ export class SidebarComponent {
 
     menuItems: MenuItem[] = [
         new MenuItem('HomePage', '', 'home', '/home'),
-
         new MenuItem('Tenants', 'Pages.Tenants', 'business', '/tenants'),
         new MenuItem('Users', 'Pages.Users', 'people', '/users'),
         new MenuItem('Roles', 'Pages.Roles', 'local_offer', '/roles'),
