@@ -58,7 +58,7 @@ export const getAuthenticateStatus
 export const getAuthenticated
     = createSelector(getAuthenticateState, fromAuthenticate.getAuthenticated);
 export const getAuthenticateStatusLoading
-    = createSelector(getAuthenticateState, fromAuthenticate.getAuthenticateStateLoading);
+    = createSelector(getAuthenticateState, fromAuthenticate.getAuthenticateStatusLoading);
 
 // User info list
 export const getUserInfoState = (state: AppState) => state.userInfo;

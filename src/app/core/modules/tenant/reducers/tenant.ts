@@ -27,7 +27,7 @@ export function reducer(state = initialState, action: Action): TenantState {
         case TenantActions.DELETE_TENANT:
         case TenantActions.UPDATE_TENANT: {
             return Object.assign({}, state, {
-                loading: toPayload(action),
+                loading: true,
             });
         }
 

@@ -31,7 +31,7 @@ export function reducer(state = initialState, action: Action): UserState {
         case UserActions.DELETE_USER:
         case UserActions.UPDATE_USER: {
             return Object.assign({}, state, {
-                loading: toPayload(action),
+                loading: true,
             });
         }
 

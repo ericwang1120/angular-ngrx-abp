@@ -30,7 +30,7 @@ export function reducer(state = initialState, action: Action): RoleState {
         case RoleActions.DELETE_ROLE:
         case RoleActions.UPDATE_ROLE: {
             return Object.assign({}, state, {
-                loading: toPayload(action),
+                loading: true,
             });
         }
 

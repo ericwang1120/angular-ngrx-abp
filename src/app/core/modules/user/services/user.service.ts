@@ -8,8 +8,6 @@ import 'rxjs/add/operator/map';
 import { UserDto, CreateUserDto, PagedResultDtoOfUserDto } from '../models';
 import { RoleDto } from '../../role/models/role';
 
-declare const API_URL: String;
-
 @Injectable()
 export class UserService {
 

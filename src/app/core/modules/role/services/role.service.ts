@@ -7,8 +7,6 @@ import 'rxjs/add/operator/map';
 
 import { RoleDto, CreateRoleDto, PagedResultDtoOfRoleDto, PermissionDto } from '../models';
 
-declare const API_URL: String;
-
 @Injectable()
 export class RoleService {
 

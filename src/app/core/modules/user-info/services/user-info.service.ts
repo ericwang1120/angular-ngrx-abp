@@ -7,8 +7,6 @@ import 'rxjs/add/operator/map';
 
 import { Permission } from '../models';
 
-declare const HOST_URL: String;
-
 @Injectable()
 export class UserInfoService {
 

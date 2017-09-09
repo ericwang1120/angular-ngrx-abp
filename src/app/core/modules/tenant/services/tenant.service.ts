@@ -7,8 +7,6 @@ import 'rxjs/add/operator/map';
 
 import { TenantDto, CreateTenantDto, PagedResultDtoOfTenantDto } from '../models';
 
-declare const API_URL: String;
-
 @Injectable()
 export class TenantService {
 

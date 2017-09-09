@@ -8,6 +8,7 @@ import * as fromRoot from '../core/ngrx/index';
 import * as authenticateActions from '../core/modules/authenticate/actions';
 import { Observable } from 'rxjs';
 import { AuthenticateDto } from '../core/modules/authenticate/models/authenticateDto';
+import { AuthenticateResultDto } from '../core/modules/authenticate/models/authenticateResultDto';
 
 @Component({
     selector: 'app-login',
@@ -16,13 +17,13 @@ import { AuthenticateDto } from '../core/modules/authenticate/models/authenticat
     animations: [routerTransition()]
 })
 export class LoginComponent implements OnInit {
-    $authenticateStatus: Observable<any>;
+    authenticateStatusLoading$: Observable<boolean>;
     authenticateDto: AuthenticateDto = new AuthenticateDto();
 
     constructor(public router: Router,
         private store: Store<fromRoot.AppState>,
     ) {
-        this.$authenticateStatus = store.select(fromRoot.getAuthenticateStatus);
+        this.authenticateStatusLoading$ = store.select(fromRoot.getAuthenticateStatusLoading);
     }
 
     ngOnInit() {
