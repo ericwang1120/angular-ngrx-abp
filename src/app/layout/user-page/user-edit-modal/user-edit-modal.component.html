@@ -10,48 +10,69 @@
     <ngb-tabset>
       <ngb-tab title="User Details">
         <ng-template ngbTabContent>
+          <div class="row">&nbsp;</div>
+
           <form role="form">
-            <div [formGroup]="userDetailsForm" class="form-group">
-              <label class="form-control-label" for="userName">User Name</label>
+            <div [formGroup]="userDetailsForm" class="form-group" [ngClass]="validatedFormClass(userName)">
+              <label> User Name </label>
               <input name="userName" formControlName="userName" [(ngModel)]="selectedUser.userName" type="text" class="form-control" id="userName">
+              <div class="form-control-feedback" *ngIf="userName.invalid && userName.dirty">
+                Field is invalid
+              </div>
             </div>
 
             <div class="row">
-              <div [formGroup]="userDetailsForm" class="form-group col col-xl-6 col-lg-6">
-                <label class="form-control-label" for="name">Name</label>
+              <div [formGroup]="userDetailsForm" class="form-group col col-xl-6 col-lg-6" [ngClass]="validatedFormClass(name)">
+                <label>Name</label>
                 <input name="name" formControlName="name" [(ngModel)]="selectedUser.name" type="text" class="form-control" id="name">
+                <div class="form-control-feedback" *ngIf="name.invalid && name.dirty">
+                  Field is invalid
+                </div>
               </div>
 
-              <div [formGroup]="userDetailsForm" class="form-group col col-xl-6 col-lg-6">
-                <label class="form-control-label" for="surname">Surname</label>
+              <div [formGroup]="userDetailsForm" class="form-group col col-xl-6 col-lg-6" [ngClass]="validatedFormClass(surname)">
+                <label>Surname</label>
                 <input name="surname" formControlName="surname" [(ngModel)]="selectedUser.surname" type="text" class="form-control" id="surname">
+                <div class="form-control-feedback" *ngIf="surname.invalid && surname.dirty">
+                  Field is invalid
+                </div>
               </div>
             </div>
 
-            <div [formGroup]="userDetailsForm" class="form-group">
-              <label class="form-control-label" for="emailAddress">Email Address</label>
+            <div [formGroup]="userDetailsForm" class="form-group" [ngClass]="validatedFormClass(emailAddress)">
+              <label>Email Address</label>
               <input name="emailAddress" formControlName="emailAddress" [(ngModel)]="selectedUser.emailAddress" type="text" class="form-control"
                 id="emailAddress">
+              <div class="form-control-feedback" *ngIf="emailAddress.invalid && emailAddress.dirty">
+                Field is invalid
+              </div>
             </div>
 
             <div *ngIf="!isUpdating">
-              <div [formGroup]="userDetailsForm" class="form-group">
-                <label class="form-control-label" for="password">Password</label>
-                <input name="password" formControlName="password" [(ngModel)]="selectedUser.password" type="text" class="form-control" id="password">
+              <div [formGroup]="userDetailsForm" class="form-group" [ngClass]="validatedFormClass(password)">
+                <label>Password</label>
+                <input type="password" name="password" formControlName="password" [(ngModel)]="selectedUser.password" class="form-control"
+                  id="password">
+                <div class="form-control-feedback" *ngIf="password.invalid && password.dirty">
+                    <p *ngIf="password.errors.required">Password is required</p>
+                    <p *ngIf="password.errors.minlength">Password must be 6 characters long</p>                </div>
               </div>
 
-              <div [formGroup]="userDetailsForm" class="form-group">
-                <label class="form-control-label" for="description">Confirm Password</label>
-                <input name="confirmPassword" formControlName="confirmPassword" [(ngModel)]="selectedUser.confirmPassword" type="text" class="form-control"
-                  id="confirmPassword">
+              <div [formGroup]="userDetailsForm" class="form-group" [ngClass]="validatedFormClass(confirmPassword)">
+                <label>Confirm Password</label>
+                <input type="password" name="confirmPassword" formControlName="confirmPassword" [(ngModel)]="selectedUser.confirmPassword"
+                  class="form-control" id="confirmPassword">
+                <div class="form-control-feedback" *ngIf="confirmPassword.invalid && confirmPassword.dirty">
+                    <p *ngIf="confirmPassword.errors.matchOther">The two passwords are not match</p>        
+                  </div>
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" [checked]="selectedUser.isActive" name="options" [(ngModel)]="selectedUser.isActive">
-                      Active              
-                    </label>
+                <input class="form-check-input" type="checkbox" name="options" [(ngModel)]="selectedUser.isActive">
+                Active
+              </label>
             </div>
           </form>
         </ng-template>
@@ -72,11 +93,11 @@
     </ngb-tabset>
 
     <hr>
-    
+
   </div>
 
   <div class="modal-footer">
-    <button [disabled]="!isValidForm" type="button" class="btn" (click)="submit.emit(selectedUser);c('Close click')">Submit</button>
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+    <button [disabled]="!isValidForm" type="button" class="btn btn-primary" (click)="submit.emit(selectedUser);c('Close click')">Submit</button>
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
   </div>
 </ng-template>

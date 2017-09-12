@@ -16,7 +16,7 @@ export class UserTableComponent implements OnInit {
     @Input('userLoginInfo') userLoginInfo: UserLoginInfoDto;
     @Output() open = new EventEmitter();
     @Output() delete = new EventEmitter();
-    @ViewChild('content') modal;
+    @ViewChild('content') deleteModal;
 
     selectedUser: UserDto;
 
@@ -26,7 +26,7 @@ export class UserTableComponent implements OnInit {
 
     openDeleteModal(user) {
         this.selectedUser = user;
-        this.modalService.open(this.modal);
+        this.modalService.open(this.deleteModal);
     }
 
     onDelete() {

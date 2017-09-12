@@ -3,6 +3,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { UserDto } from '../../../core/modules/user/models';
 import { RoleDto } from '../../../core/modules/role/models/role';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { matchOtherValidator } from './match-other-validator';
 
 @Component({
     selector: 'app-user-edit-modal',
@@ -41,15 +42,14 @@ export class UserEditModalComponent {
         this.surname = new FormControl('', Validators.required);
         this.emailAddress = new FormControl('', [
             Validators.required,
-            Validators.pattern('[^ @]*@[^ @]*')
+            Validators.email,
         ]);
         this.password = new FormControl('', [
             Validators.required,
-            Validators.minLength(8)
+            Validators.minLength(6)
         ]);
         this.confirmPassword = new FormControl('', [
-            Validators.required,
-            Validators.minLength(8)
+            matchOtherValidator('password'),
         ]);
     }
 
@@ -68,6 +68,15 @@ export class UserEditModalComponent {
 
         this.userDetailsForm = new FormGroup(group);
 
+    }
+
+    // change ngClass
+    validatedFormClass(formControlName) {
+        let classObject = {
+            'has-danger': formControlName.invalid && formControlName.dirty,
+            'has-success': formControlName.valid && formControlName.dirty
+        };
+        return classObject;
     }
 
     open(user?) {

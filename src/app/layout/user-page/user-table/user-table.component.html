@@ -17,14 +17,14 @@
                         <td>{{user.fullName}}</td>
                         <td>{{user.emailAddress}}</td>
                         <td>
-                            <i [ngClass]="{'fa-check': user.isActive,'fa-close':!user.isActive}" class="fa fa-2x text-muted"></i>
+                            <i [ngClass]="{'fa-check text-success': user.isActive,'fa-close text-danger':!user.isActive}" class="fa fa-2x text-muted"></i>
                         </td>
                         <td>
                             <div ngbDropdown class="d-inline-block">
-                                <i class="fa fa-bars fa-2x text-muted" ngbDropdownToggle></i>
+                                <i class="btn fa fa-bars fa-2x text-primary" ngbDropdownToggle></i>
                                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                    <button class="dropdown-item" (click)="open.emit(user)">Edit</button>
-                                    <button class="dropdown-item" (click)="openDeleteModal(user)">Delete</button>
+                                    <button [disabled]="user.userName=='admin'" class="dropdown-item" (click)="open.emit(user)">Edit</button>
+                                    <button [disabled]="user.userName=='admin'" class="dropdown-item" (click)="openDeleteModal(user)">Delete</button>
                                 </div>
                             </div>
                         </td>
@@ -35,7 +35,7 @@
                         <td></td>
                         <td> </td>
                         <td>
-                            <i class="fa fa-plus-circle fa-2x text-muted" (click)="open.emit()"></i>
+                            <i (click)="open.emit()" class="btn text-primary fa fa-plus-circle fa-2x"></i>
                         </td>
                     </tr>
                 </tbody>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn" (click)="onDelete(selectedUser);c('Close click')">Submit</button>
-        <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+        <button type="button" class="btn btn-danger" (click)="onDelete(selectedUser);c('Close click')">Delete</button>
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
     </div>
 </ng-template>

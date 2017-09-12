@@ -24,8 +24,8 @@
                             <div ngbDropdown class="d-inline-block">
                                 <i class="fa fa-bars fa-2x text-muted" ngbDropdownToggle></i>
                                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                    <button class="dropdown-item" (click)="open.emit(role)">Edit</button>
-                                    <button class="dropdown-item" (click)="delete.emit(role)">Delete</button>
+                                    <button [disabled]="role.isStatic" class="dropdown-item" (click)="open.emit(role)">Edit</button>
+                                    <button [disabled]="role.isStatic" class="dropdown-item" (click)="delete.emit(role)">Delete</button>
                                 </div>
                             </div>
                         </td>

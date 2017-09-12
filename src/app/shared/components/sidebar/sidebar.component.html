@@ -1,5 +1,6 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
-    <ul class="list-group">
+    <i *ngIf="userInfoLoading$|async" class="fa fa-spinner fa-spin fa-3x fa-fw text-white"></i>
+    <ul *ngIf="!(userInfoLoading$|async)" class="list-group">
         <div *ngFor="let menuItem of getMenuItemToDisplay(grantedPermissionList$|async)">
             <!--has no child-->
             <a *ngIf="!menuItem.childItems" [routerLink]="[menuItem.route]" [routerLinkActive]="['router-link-active']" class="list-group-item">
