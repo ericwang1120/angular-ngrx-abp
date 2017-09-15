@@ -119,7 +119,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
           'angular2-template-loader',
           'angular-router-loader?loader=system&genDir=compiled&aot=' + AOT
         ],
-        exclude: [/\.(spec|e2e|d)\.ts$/]
+        exclude: [/\.(spec|e2e|d)\.ts$/,/scripts/]
       },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html')] },

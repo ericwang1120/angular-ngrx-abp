@@ -1,0 +1,45 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{modalTitle}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">&nbsp;</div>
+    <form role="form">
+      <div [formGroup]="poleCategoryDetailsForm" class="form-group" [ngClass]="validatedFormClass(code)">
+        <label> Code </label>
+        <input name="code" formControlName="code" [(ngModel)]="selectedPoleCategory.code" type="text" class="form-control" id="code">
+        <div class="form-control-feedback" *ngIf="code.invalid && code.dirty">
+          Field is invalid
+        </div>
+      </div>
+
+      <div [formGroup]="poleCategoryDetailsForm" class="form-group" [ngClass]="validatedFormClass(name)">
+        <label>Name</label>
+        <input name="name" formControlName="name" [(ngModel)]="selectedPoleCategory.name" type="text" class="form-control" id="name">
+        <div class="form-control-feedback" *ngIf="name.invalid && name.dirty">
+          Field is invalid
+        </div>
+      </div>
+
+      <div [formGroup]="poleCategoryDetailsForm" class="form-group" [ngClass]="validatedFormClass(description)">
+        <label>Description</label>
+        <input name="description" formControlName="description" [(ngModel)]="selectedPoleCategory.description" type="text" class="form-control" id="description">
+        <div class="form-control-feedback" *ngIf="description.invalid && description.dirty">
+          Field is invalid
+        </div>
+      </div>
+    </form>
+
+    <hr>
+
+  </div>
+
+  <div class="modal-footer">
+    <button [disabled]="!isValidForm" type="button" class="btn btn-primary" (click)="submit.emit(selectedPoleCategory);c('Close click')">Submit</button>
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>

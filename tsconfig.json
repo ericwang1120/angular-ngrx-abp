@@ -18,7 +18,8 @@
     "node_modules",
     "compiled",
     "src/main.browser.aot.ts",
-    "e2e/**/*.ts"
+    "e2e/**/*.ts",
+    "scripts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,

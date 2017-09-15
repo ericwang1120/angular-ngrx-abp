@@ -10,6 +10,10 @@ import { UserInfoModule, UserInfoEffects } from '../modules/user-info';
 import { RoleModule, RoleEffects } from '../modules/role';
 import { TenantModule, TenantEffects } from '../modules/tenant';
 import { UserModule, UserEffects } from '../modules/user';
+import { PoleModule, PoleEffects } from '../modules/pole';
+import { PoleCategoryModule, PoleCategoryEffects } from '../modules/pole-category';
+import { LineModule, LineEffects } from '../modules/line';
+
 
 
 @NgModule({
@@ -23,14 +27,20 @@ import { UserModule, UserEffects } from '../modules/user';
             UserInfoEffects,
             RoleEffects,
             TenantEffects,
-            UserEffects
+            UserEffects,
+            PoleEffects,
+            PoleCategoryEffects,
+            LineEffects
         ]),
 
         AuthenticateModule,
         UserInfoModule,
         RoleModule,
         TenantModule,
-        UserModule
+        UserModule,
+        PoleModule,
+        PoleCategoryModule,
+        LineModule,
     ]
 })
 
