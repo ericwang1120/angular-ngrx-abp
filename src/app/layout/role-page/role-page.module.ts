@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RolePageRoutingModule } from './role-page-routing.module';
 import { RolePageComponent, RoleTableComponent, RoleEditModalComponent } from './index';
@@ -15,6 +15,7 @@ import { PageHeaderModule } from '../../shared/modules/page-header/page-header.m
         NgbModule,
         PageHeaderModule,
         FormsModule,
+        ReactiveFormsModule
     ],
     declarations: [RolePageComponent, RoleTableComponent, RoleEditModalComponent]
 })

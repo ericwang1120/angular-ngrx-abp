@@ -54,8 +54,9 @@
                 <input type="password" name="password" formControlName="password" [(ngModel)]="selectedUser.password" class="form-control"
                   id="password">
                 <div class="form-control-feedback" *ngIf="password.invalid && password.dirty">
-                    <p *ngIf="password.errors.required">Password is required</p>
-                    <p *ngIf="password.errors.minlength">Password must be 6 characters long</p>                </div>
+                  <p *ngIf="password.errors.required">Password is required</p>
+                  <p *ngIf="password.errors.minlength">Password must be 6 characters long</p>
+                </div>
               </div>
 
               <div [formGroup]="userDetailsForm" class="form-group" [ngClass]="validatedFormClass(confirmPassword)">
@@ -63,8 +64,8 @@
                 <input type="password" name="confirmPassword" formControlName="confirmPassword" [(ngModel)]="selectedUser.confirmPassword"
                   class="form-control" id="confirmPassword">
                 <div class="form-control-feedback" *ngIf="confirmPassword.invalid && confirmPassword.dirty">
-                    <p *ngIf="confirmPassword.errors.matchOther">The two passwords are not match</p>        
-                  </div>
+                  <p *ngIf="confirmPassword.errors.matchOther">The two passwords are not match</p>
+                </div>
               </div>
             </div>
 

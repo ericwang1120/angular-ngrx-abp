@@ -62,7 +62,8 @@
     "watch": "npm run watch:dev",
     "watch:aot": "npm-run-all -p -r \"build:aot:dev -- --watch\" sass:watch",
     "watch:dev": "npm-run-all -p -r \"build:dev -- --watch\" sass:watch",
-    "watch:prod": "npm-run-all -p -r \"build:prod -- --watch\" sass:watch"
+    "watch:prod": "npm-run-all -p -r \"build:prod -- --watch\" sass:watch",
+    "ngrx":"node ./scripts/ngrx/ngrx"
   },
   "dependencies": {
     "@angular/animations": "^4.3.4",

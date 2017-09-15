@@ -1,5 +1,4 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +9,6 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 export const APP_IMPORTS = [
   BrowserAnimationsModule,
   NgbModule.forRoot(),
-  ReactiveFormsModule,
   NgrxModule,
   FormsModule,
   SimpleNotificationsModule,

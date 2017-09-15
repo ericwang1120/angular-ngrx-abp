@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { RoleDto, PermissionDto } from '../../../core/modules/role/models';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-role-edit-modal',
@@ -17,12 +18,45 @@ export class RoleEditModalComponent {
     modalTitle: string;
     selectedRole: RoleDto;
 
+    roleDetailsForm: FormGroup;
+    name: FormControl;
+    displayName: FormControl;
+    description: FormControl;
+
     constructor(private modalService: NgbModal) { }
+
+    createFormControls() {
+        this.name = new FormControl('', Validators.required);
+        this.displayName = new FormControl('', Validators.required);
+        this.description = new FormControl('', Validators.required);
+    }
+
+    createForm() {
+        let group = {
+            name: this.name,
+            displayName: this.displayName,
+            description: this.description,
+        };
+
+        this.roleDetailsForm = new FormGroup(group);
+
+    }
+
+    // change ngClass
+    validatedFormClass(formControlName) {
+        let classObject = {
+            'has-danger': formControlName.invalid && formControlName.dirty,
+            'has-success': formControlName.valid && formControlName.dirty
+        };
+        return classObject;
+    }
 
     open(role?) {
         this.modalTitle = role.id ? 'Update Role' : 'Create Role';
         this.selectedRole = role;
         this.modalService.open(this.modal);
+        this.createFormControls();
+        this.createForm();
     }
 
     get permissionsWithGrantedStatus() {

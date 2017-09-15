@@ -15,8 +15,10 @@
                             id="" placeholder="Password">
                     </div>
                 </div>
-                <a *ngIf="!(authenticateStatusLoading$|async)" class="btn rounded-btn" (click)="login(authenticateDto.userNameOrEmailAddress,authenticateDto.password)"> Log in </a> 
-                <i *ngIf="authenticateStatusLoading$|async" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>                
+                <div *ngIf="!(authenticateStatusLoading$|async)">
+                    <a class="btn rounded-btn" (click)="login(authenticateDto.userNameOrEmailAddress,authenticateDto.password)"> Log in </a>                    username:admin, password:123qwe
+                </div>
+                <i *ngIf="authenticateStatusLoading$|async" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
                 <!--<a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>-->
             </form>
         </div>

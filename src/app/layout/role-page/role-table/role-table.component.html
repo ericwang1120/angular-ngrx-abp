@@ -22,10 +22,10 @@
                         <td>{{role.displayName}}</td>
                         <td>
                             <div ngbDropdown class="d-inline-block">
-                                <i class="fa fa-bars fa-2x text-muted" ngbDropdownToggle></i>
+                                <i class="btn fa fa-bars fa-2x text-primary" ngbDropdownToggle></i>
                                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                                     <button [disabled]="role.isStatic" class="dropdown-item" (click)="open.emit(role)">Edit</button>
-                                    <button [disabled]="role.isStatic" class="dropdown-item" (click)="delete.emit(role)">Delete</button>
+                                    <button [disabled]="role.isStatic" class="dropdown-item" (click)="openDeleteModal(role)">Delete</button>
                                 </div>
                             </div>
                         </td>
@@ -34,7 +34,7 @@
                         <td></td>
                         <td></td>
                         <td>
-                            <i class="fa fa-plus-circle fa-2x text-muted" (click)="open.emit()"></i>
+                            <i class="btn fa fa-plus-circle fa-2x text-primary" (click)="open.emit()"></i>
                         </td>
                     </tr>
                 </tbody>
@@ -45,3 +45,21 @@
     </div>
     -->
 </div>
+
+<ng-template #deleteModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Delete Role</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+  
+    <div class="modal-body">
+        <div> Are you sure?</div>
+    </div>
+  
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="onDelete(selectRole);c()">Delete</button>
+        <button type="button" class="btn btn-secondary" (click)="c()">Close</button>
+    </div>
+  </ng-template>
