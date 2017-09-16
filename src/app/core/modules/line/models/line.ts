@@ -1,17 +1,16 @@
 export class LineDto {
-    name: string;
-    displayName: string;
-    normalizedName?: string;
+    code: string;
+    beginPoleId: string;
+    endPoleId: string;
     description?: string;
-    isStatic?: boolean;
-    permissions?: string[];
-    id?: number;
+    id: string;
 
     constructor() {
-        this.name = '';
-        this.displayName = '';
-        this.permissions = [];
+        this.code = '';
+        this.beginPoleId = '';
+        this.endPoleId = '';
         this.description = '';
+        this.id = '';
     }
 }
 

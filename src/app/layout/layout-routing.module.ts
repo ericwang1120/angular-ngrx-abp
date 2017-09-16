@@ -25,6 +25,14 @@ const routes: Routes = [
                 path: 'pole-categories',
                 loadChildren: './pole-category-page/pole-category-page.module#PoleCategoryPageModule'
             },
+            {
+                path: 'poles',
+                loadChildren: './pole-page/pole-page.module#PolePageModule'
+            },
+            {
+                path: 'lines',
+                loadChildren: './line-page/line-page.module#LinePageModule'
+            },
         ]
     }
 ];
