@@ -4,6 +4,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import { jwt } from '../../../utilities/helpers/jwt';
 
 import { {{Variable}}Dto, Create{{Variable}}Dto, PagedResultDtoOf{{Variable}}Dto } from '../models';
 
@@ -14,29 +15,29 @@ export class {{Variable}}Service {
     }
 
     load{{Variables}}(): Observable<PagedResultDtoOf{{Variable}}Dto[]> {
-        return this.http.get(API_URL + '/services/app/{{Variable}}/GetAll', this.jwt())
+        return this.http.get(API_URL + '/services/app/{{Variable}}/GetAll', jwt())
             .map(result => result.json().result);
     }
 
     get{{Variable}}(id): Observable<{{Variable}}Dto> {
-        return this.http.get(API_URL + '/services/app/{{Variable}}/Get?id=' + id, this.jwt())
+        return this.http.get(API_URL + '/services/app/{{Variable}}/Get?id=' + id, jwt())
             .map(result => result.json().result);
     }
 
     create{{Variable}}(create{{Variable}}Dto: Create{{Variable}}Dto): Observable<{{Variable}}Dto> {
         return this.http.post(
-            API_URL + '/services/app/{{Variable}}/Create', JSON.stringify(create{{Variable}}Dto), this.jwt())
+            API_URL + '/services/app/{{Variable}}/Create', JSON.stringify(create{{Variable}}Dto), jwt())
             .map(result => result.json().result || {});
     }
 
     delete{{Variable}}({{variable}}: {{Variable}}Dto): Observable<{{Variable}}Dto> {
-        return this.http.delete(API_URL + `/services/app/{{Variable}}/Delete?id=${{{variable}}.id}`, this.jwt())
+        return this.http.delete(API_URL + `/services/app/{{Variable}}/Delete?id=${{{variable}}.id}`, jwt())
             .map(result => {{variable}});
     }
 
     update{{Variable}}({{variable}}: {{Variable}}Dto): Observable<{{Variable}}Dto> {
         return this.http.put(
-            API_URL + '/services/app/{{Variable}}/Update', JSON.stringify({{variable}}), this.jwt())
+            API_URL + '/services/app/{{Variable}}/Update', JSON.stringify({{variable}}), jwt())
             .map(result => {{variable}});
     }
 

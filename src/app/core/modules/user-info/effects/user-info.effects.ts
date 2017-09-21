@@ -9,6 +9,16 @@ import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class UserInfoEffects {
+    @Effect() getAll$ =
+    this.action$.ofType(UserInfoActions.GET_ALL)
+        .switchMap(() => this.service.getAll()
+            .map(allInformation => ({
+                type: UserInfoActions.GET_ALL_SUCCESS,
+                payload: allInformation
+            }))
+            .catch(() => of({ type: UserInfoActions.FAIL }))
+        );
+
     @Effect() loadUserInfoWhenAuthenticateSuccess$ =
     this.action$.ofType(AuthenticateActions.AUTHENTICATE_SUCCESS)
         .switchMap(() => Observable.from([{ type: UserInfoActions.LOAD_GRANTED_PERMISSIONS },

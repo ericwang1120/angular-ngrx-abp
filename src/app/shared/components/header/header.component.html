@@ -9,11 +9,24 @@
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">
             </form>
-        -->
+           -->
             <ul class="navbar-nav ml-auto mt-2 mt-md-0">
+                <!--
                 <li class="nav-item">
                     <a href="javascript:void(0)" class="nav-link mt-1" style="padding: 0.375rem 1rem !important; border-color: #999;" (click)="rltAndLtr()">RTL/LTR</a>
                 </li> &nbsp;
+                -->
+                <li class="nav-item dropdown" ngbDropdown>
+                    <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                            <i class="fa {{(localizationInfo$|async).currentLanguage.icon}}"></i> {{(localizationInfo$|async).currentLanguage.displayName}} <b class="caret"></b>
+                        </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a *ngFor="let language of (localizationInfo$|async).languages" class="dropdown-item" [routerLink]="['/']" (click)="changeLanguage(language.name)">
+                            <i class="fa {{language.icon}}"></i> 
+                            {{language.displayName}}
+                        </a>
+                    </div>
+                </li>
                 <li class="nav-item dropdown" ngbDropdown>
                     <a *ngIf="userLoginInfo$|async" href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
                         <i class="fa fa-user"></i> {{(userLoginInfo$|async).name}} <b class="caret"></b>

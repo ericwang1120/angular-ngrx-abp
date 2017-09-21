@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AppState } from './core/ngrx/index';
 import { Store } from '@ngrx/store';
 import * as authenticateActions from './core/modules/authenticate/actions';
+import * as userInfoActions from './core/modules/user-info/actions';
 import { NotificationsService } from 'angular2-notifications';
 
 @Component({
@@ -30,5 +31,6 @@ export class AppComponent {
   constructor(private store: Store<AppState>,
     private _service: NotificationsService) {
     store.dispatch({ type: authenticateActions.LOAD_FROM_CACHE });
+    store.dispatch({ type: userInfoActions.GET_ALL });
   }
 }

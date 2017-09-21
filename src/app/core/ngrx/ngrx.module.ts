@@ -13,6 +13,7 @@ import { UserModule, UserEffects } from '../modules/user';
 import { PoleModule, PoleEffects } from '../modules/pole';
 import { PoleCategoryModule, PoleCategoryEffects } from '../modules/pole-category';
 import { LineModule, LineEffects } from '../modules/line';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 
@@ -22,6 +23,9 @@ import { LineModule, LineEffects } from '../modules/line';
             reducers,
             { metaReducers }
         ),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25 //  Retains last 25 states
+        }),
         EffectsModule.forRoot([
             AuthenticateEffects,
             UserInfoEffects,

@@ -60,7 +60,12 @@ export function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
     };
 }
 
-export const metaReducers = (ENV == 'production') ? [] : [logger, storeFreeze, stateSetter];
+export const metaReducers =
+    (ENV === JSON.stringify('production')) ? [] : [
+        // logger,
+        storeFreeze,
+        stateSetter
+    ];
 
 // Authenticate List
 export const getAuthenticateState = (state: AppState) => state.authenticate;
@@ -76,6 +81,7 @@ export const getUserInfoState = (state: AppState) => state.userInfo;
 export const getGrantedPermissionList
     = createSelector(getUserInfoState, fromUserInfo.getGrantedPermissionList);
 export const getUserLoginInfo = createSelector(getUserInfoState, fromUserInfo.getUserLoginInfo);
+export const getLocalization = createSelector(getUserInfoState, fromUserInfo.getLocalization);
 export const getUserInfoLoading = createSelector(getUserInfoState, fromUserInfo.getUserInfoLoading);
 
 // Roles
@@ -102,8 +108,10 @@ export const getPoleListLoading = createSelector(getPoleState, fromPole.getPoleL
 
 // Pole Categories
 export const getPoleCategoryState = (state: AppState) => state.poleCategory;
-export const getPoleCategoryList = createSelector(getPoleCategoryState, fromPoleCategory.getPoleCategoryList);
-export const getPoleCategoryListLoading = createSelector(getPoleCategoryState, fromPoleCategory.getPoleCategoryListLoading);
+export const getPoleCategoryList =
+    createSelector(getPoleCategoryState, fromPoleCategory.getPoleCategoryList);
+export const getPoleCategoryListLoading =
+    createSelector(getPoleCategoryState, fromPoleCategory.getPoleCategoryListLoading);
 
 // Lines
 export const getLineState = (state: AppState) => state.line;

@@ -4,7 +4,7 @@
         <div *ngFor="let menuItem of getMenuItemToDisplay(grantedPermissionList$|async)">
             <!--has no child-->
             <a *ngIf="!menuItem.childItems" [routerLink]="[menuItem.route]" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                {{menuItem.name}}
+                {{menuItem.name|translate|async}}
             </a>
             <div class="nested-menu" *ngIf="menuItem.childItems">
                 <a class="list-group-item" (click)="addExpandClass('pages')">

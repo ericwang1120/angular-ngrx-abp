@@ -4,7 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 // ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../../core/ngrx/index';
-import { UserLoginInfoDto } from '../../../core/modules/user-info/models/current-login-information';
+import { UserLoginInfoDto, LocalizationDto } from '../../../core/modules/user-info/models';
 import { Observable } from 'rxjs/Observable';
 import * as authenticateActions from '../../../core/modules/authenticate/actions';
 
@@ -16,6 +16,7 @@ import * as authenticateActions from '../../../core/modules/authenticate/actions
 })
 export class HeaderComponent implements OnInit {
     userLoginInfo$: Observable<UserLoginInfoDto>;
+    localizationInfo$: Observable<LocalizationDto>;
 
     constructor(public router: Router,
         private store: Store<fromRoot.AppState>) {
@@ -25,6 +26,7 @@ export class HeaderComponent implements OnInit {
             }
         });
         this.userLoginInfo$ = store.select(fromRoot.getUserLoginInfo);
+        this.localizationInfo$ = store.select(fromRoot.getLocalization);
     }
 
     ngOnInit() { }
@@ -34,12 +36,17 @@ export class HeaderComponent implements OnInit {
         dom.classList.toggle('push-right');
     }
 
-    rltAndLtr() {
-        const dom: any = document.querySelector('body');
-        dom.classList.toggle('rtl');
-    }
+    // rltAndLtr() {
+    //     const dom: any = document.querySelector('body');
+    //     dom.classList.toggle('rtl');
+    // }
 
     logout() {
         this.store.dispatch({ type: authenticateActions.LOGOUT });
+    }
+
+    changeLanguage(languageName: string): void {
+        localStorage.setItem('localization', languageName);
+        location.reload();
     }
 }

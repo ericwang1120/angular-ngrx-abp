@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent, SidebarComponent } from '../shared';
+import { TranslatePipe } from '../core/utilities/pipes/translate.pipe';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import { HeaderComponent, SidebarComponent } from '../shared';
         LayoutComponent,
         HeaderComponent,
         SidebarComponent,
+        TranslatePipe,
     ]
 })
 export class LayoutModule { }

@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LinePageRoutingModule } from './line-page-routing.module';
 import { LinePageComponent, LineTableComponent, LineEditModalComponent } from './index';
 import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
-import { NamePipe } from '../../core/utilities/pipes/name.pipe';
+import { CoreModule } from '../../core/utilities/pipes/core.module';
 
 
 @NgModule({
@@ -17,8 +17,8 @@ import { NamePipe } from '../../core/utilities/pipes/name.pipe';
         PageHeaderModule,
         FormsModule,
         ReactiveFormsModule,
-
+        CoreModule
     ],
-    declarations: [NamePipe, LinePageComponent, LineTableComponent, LineEditModalComponent]
+    declarations: [ LinePageComponent, LineTableComponent, LineEditModalComponent]
 })
 export class LinePageModule { }

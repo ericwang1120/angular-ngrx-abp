@@ -63,7 +63,7 @@
     "watch:aot": "npm-run-all -p -r \"build:aot:dev -- --watch\" sass:watch",
     "watch:dev": "npm-run-all -p -r \"build:dev -- --watch\" sass:watch",
     "watch:prod": "npm-run-all -p -r \"build:prod -- --watch\" sass:watch",
-    "ngrx":"node ./scripts/ngrx/ngrx"
+    "ngrx": "node ./scripts/ngrx/ngrx"
   },
   "dependencies": {
     "@angular/animations": "^4.3.4",
@@ -83,8 +83,10 @@
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.2",
     "@ngrx/effects": "^4.0.2",
     "@ngrx/store": "^4.0.2",
+    "@ngrx/store-devtools": "^4.0.0",
     "angular2-notifications": "^0.7.7",
     "core-js": "2.4.1",
+    "famfamfam-flags": "^1.0.0",
     "font-awesome": "^4.7.0",
     "ip": "~1.1.5",
     "ng2-charts": "^1.6.0",

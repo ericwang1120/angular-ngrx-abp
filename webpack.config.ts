@@ -92,6 +92,7 @@ const COPY_FOLDERS = [
   { from: 'src/assets', to: 'assets' },
   { from: 'src/app/styles.css' },
   { from: 'node_modules/font-awesome', to: 'font-awesome' },
+  { from: 'node_modules/famfamfam-flags/dist/sprite', to: 'famfamfam-flags' },
   ...MY_COPY_FOLDERS
 ];
 
@@ -119,7 +120,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
           'angular2-template-loader',
           'angular-router-loader?loader=system&genDir=compiled&aot=' + AOT
         ],
-        exclude: [/\.(spec|e2e|d)\.ts$/,/scripts/]
+        exclude: [/\.(spec|e2e|d)\.ts$/, /scripts/]
       },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html')] },

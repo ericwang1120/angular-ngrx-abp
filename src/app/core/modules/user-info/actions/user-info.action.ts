@@ -5,6 +5,8 @@ import { Permission, CurrentLoginInformation } from '../models';
 
 export const LOAD_GRANTED_PERMISSIONS = '[UserInfo] Load Granted Permissions';
 export const LOAD_GRANTED_PERMISSIONS_SUCCESS = '[UserInfo] Load Granted Permissions Success';
+export const GET_ALL = '[UserInfo] Get All';
+export const GET_ALL_SUCCESS = '[UserInfo] Get All Success';
 export const GET_CURRENT_LOGIN_INFORMATION = '[UserInfo] Get Current Login Information';
 export const GET_CURRENT_LOGIN_INFORMATION_SUCCESS
   = '[UserInfo] Get Current Login Information Success';
@@ -16,6 +18,16 @@ export class LoadGrantPermissions implements Action {
 
 export class LoadGrantPermissionsSuccess implements Action {
   readonly type = LOAD_GRANTED_PERMISSIONS_SUCCESS;
+
+  constructor(public payload: Permission[]) { }
+}
+
+export class GetAll implements Action {
+  readonly type = GET_ALL;
+}
+
+export class GetAllSuccess implements Action {
+  readonly type = GET_ALL_SUCCESS;
 
   constructor(public payload: Permission[]) { }
 }

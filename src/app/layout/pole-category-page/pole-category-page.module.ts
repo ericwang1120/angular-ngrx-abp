@@ -4,7 +4,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PoleCategoryPageRoutingModule } from './pole-category-page-routing.module';
-import { PoleCategoryPageComponent, PoleCategoryTableComponent, PoleCategoryEditModalComponent } from './index';
+import {
+    PoleCategoryPageComponent,
+    PoleCategoryTableComponent,
+    PoleCategoryEditModalComponent
+} from './index';
 import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
 
 
@@ -17,6 +21,10 @@ import { PageHeaderModule } from '../../shared/modules/page-header/page-header.m
         FormsModule,
         ReactiveFormsModule
     ],
-    declarations: [PoleCategoryPageComponent, PoleCategoryTableComponent, PoleCategoryEditModalComponent]
+    declarations: [
+        PoleCategoryPageComponent,
+        PoleCategoryTableComponent,
+        PoleCategoryEditModalComponent
+    ]
 })
 export class PoleCategoryPageModule { }
