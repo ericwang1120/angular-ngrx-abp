@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import { NamePipe, PivotPipe, WithFirstCharPipe, ConcatToStringPipe } from './index';
+import { TranslatePipe, NamePipe, PivotPipe, WithFirstCharPipe, ConcatToStringPipe } from './index';
 
 @NgModule({
     imports: [
 
     ],
     declarations: [
-        NamePipe, PivotPipe, WithFirstCharPipe, ConcatToStringPipe
+        NamePipe, PivotPipe, WithFirstCharPipe, ConcatToStringPipe, TranslatePipe
     ],
-    exports: [NamePipe, PivotPipe, WithFirstCharPipe, ConcatToStringPipe],
+    exports: [TranslatePipe, NamePipe, PivotPipe, WithFirstCharPipe, ConcatToStringPipe],
     providers: []
 })
 export class CoreModule { }

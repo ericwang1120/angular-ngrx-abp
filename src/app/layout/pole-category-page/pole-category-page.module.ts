@@ -10,6 +10,7 @@ import {
     PoleCategoryEditModalComponent
 } from './index';
 import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
+import { CoreModule } from '../../core/utilities/pipes/core.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PageHeaderModule } from '../../shared/modules/page-header/page-header.m
         NgbModule,
         PageHeaderModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CoreModule
     ],
     declarations: [
         PoleCategoryPageComponent,

@@ -52,7 +52,7 @@ export class RoleEditModalComponent {
     }
 
     open(role?) {
-        this.modalTitle = role.id ? 'Update Role' : 'Create Role';
+        this.modalTitle = role.id ? 'UpdateRole' : 'CreateRole';
         this.selectedRole = role;
         this.modalService.open(this.modal);
         this.createFormControls();

@@ -5,19 +5,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent, SidebarComponent } from '../shared';
-import { TranslatePipe } from '../core/utilities/pipes/translate.pipe';
+import { CoreModule } from '../core/utilities/pipes/core.module';
 
 @NgModule({
     imports: [
         CommonModule,
         NgbModule.forRoot(),
-        LayoutRoutingModule
+        LayoutRoutingModule,
+        CoreModule
     ],
     declarations: [
         LayoutComponent,
         HeaderComponent,
         SidebarComponent,
-        TranslatePipe,
     ]
 })
 export class LayoutModule { }

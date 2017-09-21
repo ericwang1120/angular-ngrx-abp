@@ -18,10 +18,10 @@
                 -->
                 <li class="nav-item dropdown" ngbDropdown>
                     <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
-                            <i class="fa {{(localizationInfo$|async).currentLanguage.icon}}"></i> {{(localizationInfo$|async).currentLanguage.displayName}} <b class="caret"></b>
+                            <i class="fa {{(currentLanguage|async).icon}}"></i> {{(currentLanguage|async).displayName}} <b class="caret"></b>
                         </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a *ngFor="let language of (localizationInfo$|async).languages" class="dropdown-item" [routerLink]="['/']" (click)="changeLanguage(language.name)">
+                        <a *ngFor="let language of (localizationInfo$|async).languages" class="dropdown-item" [routerLink]="" (click)="changeLanguage(language.name)">
                             <i class="fa {{language.icon}}"></i> 
                             {{language.displayName}}
                         </a>
@@ -32,7 +32,7 @@
                         <i class="fa fa-user"></i> {{(userLoginInfo$|async).name}} <b class="caret"></b>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" [routerLink]="['/login']" (click)="logout()"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        <a class="dropdown-item" [routerLink]="['/login']" (click)="logout()"><i class="fa fa-fw fa-power-off"></i> {{'Logout'|translate|async}}</a>
                     </div>
                 </li>
             </ul>

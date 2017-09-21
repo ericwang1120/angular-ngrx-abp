@@ -4,11 +4,11 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>User Name</th>
-                        <th>Full Name</th>
-                        <th>Email Address</th>
-                        <th>Is Active</th>
-                        <th>Actions</th>
+                        <th>{{'UserName'|translate|async}}</th>
+                        <th>{{'FullName'|translate|async}}</th>
+                        <th>{{'EmailAddress'|translate|async}}</th>
+                        <th>{{'IsActive'|translate|async}}</th>
+                        <th>{{'Actions'|translate|async}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,8 +23,8 @@
                             <div ngbDropdown class="d-inline-block">
                                 <i class="btn fa fa-bars fa-2x text-primary" ngbDropdownToggle></i>
                                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                    <button [disabled]="user.userName=='admin'" class="dropdown-item" (click)="open.emit(user)">Edit</button>
-                                    <button [disabled]="user.userName=='admin'" class="dropdown-item" (click)="openDeleteModal(user)">Delete</button>
+                                    <button [disabled]="user.userName=='admin'" class="dropdown-item" (click)="open.emit(user)">{{'Edit'|translate|async}}</button>
+                                    <button [disabled]="user.userName=='admin'" class="dropdown-item" (click)="openDeleteModal(user)">{{'Delete'|translate|async}}</button>
                                 </div>
                             </div>
                         </td>
@@ -46,19 +46,19 @@
 
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
-        <h4 class="modal-title">Delete User</h4>
+        <h4 class="modal-title">{{'DeleteUser'|translate|async}}</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
     <div class="modal-body">
-        <div> Are you sure?</div>
-        <div *ngIf="selectedUser.id===userLoginInfo.id">You are deleting current user, you will log out automatically after deleting.</div>
+        <div> {{'AreYouSure'|translate|async}}</div>
+        <div *ngIf="selectedUser.id===userLoginInfo.id">{{'DeletingCurrentUser'|translate|async}}</div>
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="onDelete(selectedUser);c('Close click')">Delete</button>
-        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+        <button type="button" class="btn btn-danger" (click)="onDelete(selectedUser);c('Close click')">{{'Delete'|translate|async}}</button>
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">{{'Close'|translate|async}}</button>
     </div>
 </ng-template>

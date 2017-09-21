@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserPageRoutingModule } from './user-page-routing.module';
 import { UserPageComponent, UserTableComponent, UserEditModalComponent } from './index';
 import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
+import { CoreModule } from '../../core/utilities/pipes/core.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { PageHeaderModule } from '../../shared/modules/page-header/page-header.m
         NgbModule,
         PageHeaderModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CoreModule
     ],
     declarations: [UserPageComponent, UserTableComponent, UserEditModalComponent]
 })

@@ -4,10 +4,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Code</th>
-                        <th>Begin Pole</th>
-                        <th>End Pole</th>
-                        <th>Actions</th>
+                        <th>{{'Code'|translate|async}}</th>
+                        <th>{{'BeginPole'|translate|async}}</th>
+                        <th>{{'EndPole'|translate|async}}</th>
+                        <th>{{'Actions'|translate|async}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,8 +19,8 @@
                             <div ngbDropdown class="d-inline-block">
                                 <i class="btn fa fa-bars fa-2x text-primary" ngbDropdownToggle></i>
                                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                    <button [disabled]="line.lineName=='admin'" class="dropdown-item" (click)="open.emit(line)">Edit</button>
-                                    <button [disabled]="line.lineName=='admin'" class="dropdown-item" (click)="openDeleteModal(line)">Delete</button>
+                                    <button [disabled]="line.lineName=='admin'" class="dropdown-item" (click)="open.emit(line)">{{'Edit'|translate|async}}</button>
+                                    <button [disabled]="line.lineName=='admin'" class="dropdown-item" (click)="openDeleteModal(line)">{{'Delete'|translate|async}}</button>
                                 </div>
                             </div>
                         </td>
@@ -41,18 +41,18 @@
 
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
-        <h4 class="modal-title">Delete line</h4>
+        <h4 class="modal-title">{{'Delete'|translate|async}}</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
     <div class="modal-body">
-        <div> Are you sure?</div>
+        <div> {{'AreYouSure'|translate|async}}</div>
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="onDelete(selectedline);c('Close click')">Delete</button>
-        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+        <button type="button" class="btn btn-danger" (click)="onDelete(selectedline);c('Close click')">{{'Delete'|translate|async}}</button>
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">{{'Close'|translate|async}}</button>
     </div>
 </ng-template>

@@ -68,7 +68,7 @@ export class PoleEditModalComponent {
     }
 
     open(pole?) {
-        this.modalTitle = pole.id ? 'Update Pole' : 'Create Pole';
+        this.modalTitle = pole.id ? 'Update' : 'Create';
         this.isUpdating = pole.id ? true : false;
         this.selectedPole = pole;
         this.modalService.open(this.modal);

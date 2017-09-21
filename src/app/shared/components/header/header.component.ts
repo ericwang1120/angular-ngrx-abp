@@ -7,6 +7,8 @@ import * as fromRoot from '../../../core/ngrx/index';
 import { UserLoginInfoDto, LocalizationDto } from '../../../core/modules/user-info/models';
 import { Observable } from 'rxjs/Observable';
 import * as authenticateActions from '../../../core/modules/authenticate/actions';
+import * as userInfoActions from '../../../core/modules/user-info/actions';
+import { LanguageDto } from '../../../core/modules/user-info/models/localization';
 
 
 @Component({
@@ -47,6 +49,17 @@ export class HeaderComponent implements OnInit {
 
     changeLanguage(languageName: string): void {
         localStorage.setItem('localization', languageName);
-        location.reload();
+        this.store.dispatch({ type: userInfoActions.GET_ALL });
+    }
+
+    get currentLanguage(): Observable<LanguageDto> {
+        return this.localizationInfo$.map(
+            localizationInfo => {
+                if (localizationInfo.currentLanguage) {
+                    return localizationInfo.currentLanguage;
+                }
+                return {};
+            }
+        );
     }
 }

@@ -1,5 +1,5 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'Lines'"></app-page-header>
+    <app-page-header [heading]="'Lines'|translate|async"></app-page-header>
     <i *ngIf="(lineListLoading$|async)||(poleListLoading$|async)" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
     <app-line-table *ngIf="!(lineListLoading$|async)&&!(poleListLoading$|async)" (open)="open($event)" (delete)="delete($event)"
         [lineList]="lineList$|async" [poleList]="poleList$|async">

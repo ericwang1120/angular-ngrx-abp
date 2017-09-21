@@ -1,6 +1,6 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">{{modalTitle}}</h4>
+    <h4 class="modal-title">{{modalTitle|translate|async}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -8,49 +8,49 @@
 
   <div class="modal-body">
     <ngb-tabset>
-      <ngb-tab title="User Details">
+      <ngb-tab title="{{'UserDetails'|translate|async}}">
         <ng-template ngbTabContent>
           <div class="row">&nbsp;</div>
 
           <form role="form">
             <div [formGroup]="userDetailsForm" class="form-group" [ngClass]="validatedFormClass(userName)">
-              <label> User Name </label>
+              <label> {{'UserName'|translate|async}} </label>
               <input name="userName" formControlName="userName" [(ngModel)]="selectedUser.userName" type="text" class="form-control" id="userName">
               <div class="form-control-feedback" *ngIf="userName.invalid && userName.dirty">
-                Field is invalid
+                {{'FieldIsInvalid'|translate|async}}
               </div>
             </div>
 
             <div class="row">
               <div [formGroup]="userDetailsForm" class="form-group col col-xl-6 col-lg-6" [ngClass]="validatedFormClass(name)">
-                <label>Name</label>
+                <label>{{'Name'|translate|async}}</label>
                 <input name="name" formControlName="name" [(ngModel)]="selectedUser.name" type="text" class="form-control" id="name">
                 <div class="form-control-feedback" *ngIf="name.invalid && name.dirty">
-                  Field is invalid
+                  {{'FieldIsInvalid'|translate|async}}
                 </div>
               </div>
 
               <div [formGroup]="userDetailsForm" class="form-group col col-xl-6 col-lg-6" [ngClass]="validatedFormClass(surname)">
-                <label>Surname</label>
+                <label>{{'Surname'|translate|async}}</label>
                 <input name="surname" formControlName="surname" [(ngModel)]="selectedUser.surname" type="text" class="form-control" id="surname">
                 <div class="form-control-feedback" *ngIf="surname.invalid && surname.dirty">
-                  Field is invalid
+                  {{'FieldIsInvalid'|translate|async}}
                 </div>
               </div>
             </div>
 
             <div [formGroup]="userDetailsForm" class="form-group" [ngClass]="validatedFormClass(emailAddress)">
-              <label>Email Address</label>
+              <label>{{'EmailAddress'|translate|async}}</label>
               <input name="emailAddress" formControlName="emailAddress" [(ngModel)]="selectedUser.emailAddress" type="text" class="form-control"
                 id="emailAddress">
               <div class="form-control-feedback" *ngIf="emailAddress.invalid && emailAddress.dirty">
-                Field is invalid
+                {{'FieldIsInvalid'|translate|async}}
               </div>
             </div>
 
             <div *ngIf="!isUpdating">
               <div [formGroup]="userDetailsForm" class="form-group" [ngClass]="validatedFormClass(password)">
-                <label>Password</label>
+                <label>{{'Password'|translate|async}}</label>
                 <input type="password" name="password" formControlName="password" [(ngModel)]="selectedUser.password" class="form-control"
                   id="password">
                 <div class="form-control-feedback" *ngIf="password.invalid && password.dirty">
@@ -60,7 +60,7 @@
               </div>
 
               <div [formGroup]="userDetailsForm" class="form-group" [ngClass]="validatedFormClass(confirmPassword)">
-                <label>Confirm Password</label>
+                <label>{{'ConfirmPassword'|translate|async}}</label>
                 <input type="password" name="confirmPassword" formControlName="confirmPassword" [(ngModel)]="selectedUser.confirmPassword"
                   class="form-control" id="confirmPassword">
                 <div class="form-control-feedback" *ngIf="confirmPassword.invalid && confirmPassword.dirty">
@@ -72,14 +72,14 @@
             <div class="form-group">
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="options" [(ngModel)]="selectedUser.isActive">
-                Active
+                {{'IsActive'|translate|async}}
               </label>
             </div>
           </form>
         </ng-template>
       </ngb-tab>
 
-      <ngb-tab title="User Roles">
+      <ngb-tab title="{{'UserRoles'|translate|async}}">
         <ng-template ngbTabContent>
           <form role="roles" #roleForm="ngForm">
             <div (click)="selectRole(role)" *ngFor="let role of rolesWithGrantedStatus" class="form-check form-check-inline">
@@ -98,7 +98,7 @@
   </div>
 
   <div class="modal-footer">
-    <button [disabled]="!isValidForm" type="button" class="btn btn-primary" (click)="submit.emit(selectedUser);c('Close click')">Submit</button>
-    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+    <button [disabled]="!isValidForm" type="button" class="btn btn-primary" (click)="submit.emit(selectedUser);c('Close click')">{{'Submit'|translate|async}}</button>
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">{{'Close'|translate|async}}</button>
   </div>
 </ng-template>

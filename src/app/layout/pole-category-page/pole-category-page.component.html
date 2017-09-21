@@ -1,5 +1,5 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'Pole Categories'"></app-page-header>
+    <app-page-header [heading]="'PoleCategories'|translate|async"></app-page-header>
     <i *ngIf="poleCategoryListLoading$|async" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
     <app-pole-category-table *ngIf="!(poleCategoryListLoading$|async)" (open)="open($event)" (delete)="delete($event)"
         [poleCategoryList]="poleCategoryList$|async">

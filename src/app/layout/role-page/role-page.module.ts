@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RolePageRoutingModule } from './role-page-routing.module';
 import { RolePageComponent, RoleTableComponent, RoleEditModalComponent } from './index';
 import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
+import { CoreModule } from '../../core/utilities/pipes/core.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { PageHeaderModule } from '../../shared/modules/page-header/page-header.m
         NgbModule,
         PageHeaderModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CoreModule
     ],
     declarations: [RolePageComponent, RoleTableComponent, RoleEditModalComponent]
 })

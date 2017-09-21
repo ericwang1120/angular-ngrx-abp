@@ -54,7 +54,7 @@ export class PoleCategoryEditModalComponent {
     }
 
     open(poleCategory?) {
-        this.modalTitle = poleCategory.id ? 'Update PoleCategory' : 'Create PoleCategory';
+        this.modalTitle = poleCategory.id ? 'Update' : 'Create';
         this.isUpdating = poleCategory.id ? true : false;
         this.selectedPoleCategory = poleCategory;
         this.modalService.open(this.modal);

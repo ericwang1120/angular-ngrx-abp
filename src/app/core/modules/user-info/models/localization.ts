@@ -13,7 +13,7 @@ export class CurrentCultureDto {
 export class LanguageDto {
     name: string;
     displayName: string;
-    icon: number;
+    icon: string;
     isDefault: boolean;
     isDisabled: boolean;
 }

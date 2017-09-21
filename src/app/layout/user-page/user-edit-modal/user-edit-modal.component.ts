@@ -80,7 +80,7 @@ export class UserEditModalComponent {
     }
 
     open(user?) {
-        this.modalTitle = user.id ? 'Update User' : 'Create User';
+        this.modalTitle = user.id ? 'UpdateUser' : 'CreateUser';
         this.isUpdating = user.id ? true : false;
         this.selectedUser = user;
         this.modalService.open(this.modal);

@@ -16,7 +16,7 @@ export class LineEditModalComponent {
     @ViewChild('content') modal;
     @Output() submit = new EventEmitter();
     @Input('poleList') poleList: PoleDto[];
-    
+
     lineDetailsForm: FormGroup;
     code: FormControl;
     beginPoleId: FormControl;
@@ -59,7 +59,7 @@ export class LineEditModalComponent {
     }
 
     open(line?) {
-        this.modalTitle = line.id ? 'Update Line' : 'Create Line';
+        this.modalTitle = line.id ? 'Update' : 'Create';
         this.isUpdating = line.id ? true : false;
         this.selectedLine = line;
         this.modalService.open(this.modal);

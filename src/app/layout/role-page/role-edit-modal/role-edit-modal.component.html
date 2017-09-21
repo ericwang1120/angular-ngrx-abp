@@ -1,6 +1,6 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">{{modalTitle}}</h4>
+    <h4 class="modal-title">{{modalTitle|translate|async}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -9,34 +9,34 @@
   <div class="modal-body">
     <form role="form">
       <div [formGroup]="roleDetailsForm" class="form-group" [ngClass]="validatedFormClass(name)">
-        <label>Role Name</label>
+        <label>{{'Name'|translate|async}}</label>
         <input formControlName="name" name="name" [(ngModel)]="selectedRole.name" type="text" class="form-control" id="name">
         <div class="form-control-feedback" *ngIf="name.invalid && name.dirty">
-          Field is invalid
+          {{'FieldIsInvalid'|translate|async}}
         </div>
       </div>
 
       <div [formGroup]="roleDetailsForm" class="form-group" [ngClass]="validatedFormClass(displayName)">
-        <label>Display Name</label>
+        <label>{{'DisplayName'|translate|async}}</label>
         <input formControlName="displayName" name="displayName" [(ngModel)]="selectedRole.displayName" type="text" class="form-control"
           id="displayName">
         <div class="form-control-feedback" *ngIf="displayName.invalid && displayName.dirty">
-          Field is invalid
+          {{'FieldIsInvalid'|translate|async}}
         </div>
       </div>
 
       <div [formGroup]="roleDetailsForm" class="form-group" [ngClass]="validatedFormClass(description)">
-        <label>Role Description</label>
+        <label>{{'Description'|translate|async}}</label>
         <input formControlName="description" name="description" [(ngModel)]="selectedRole.description" type="text" class="form-control"
           id="description">
         <div class="form-control-feedback" *ngIf="description.invalid && description.dirty">
-          Field is invalid
+          {{'FieldIsInvalid'|translate|async}}
         </div>
       </div>
     </form>
 
     <hr>
-    <h5>Permissions</h5>
+    <h5>{{'Permissions'|translate|async}}</h5>
     <form role="permissions">
       <div (click)="selectPermission(permission)" *ngFor="let permission of permissionsWithGrantedStatus" class="form-check form-check-inline">
         <label class="form-check-label">
@@ -49,7 +49,7 @@
   </div>
 
   <div class="modal-footer">
-    <button [disabled]="!roleDetailsForm.valid" type="button" class="btn btn-primary" (click)="submit.emit(selectedRole);c('Close click')">Submit</button>
-    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+    <button [disabled]="!roleDetailsForm.valid" type="button" class="btn btn-primary" (click)="submit.emit(selectedRole);c('Close click')">{{'Submit'|translate|async}}</button>
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">{{'Close'|translate|async}}</button>
   </div>
 </ng-template>

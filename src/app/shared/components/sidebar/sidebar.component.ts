@@ -19,12 +19,12 @@ export class SidebarComponent {
 
     menuItems: MenuItem[] = [
         new MenuItem('HomePage', '', 'home', '/home'),
-        new MenuItem('Tenants', 'Pages.Tenants', 'business', '/tenants'),
         new MenuItem('Users', 'Pages.Users', 'people', '/users'),
         new MenuItem('Roles', 'Pages.Roles', 'local_offer', '/roles'),
-        new MenuItem('Pole Categories', '', 'info', '/pole-categories'),
+        new MenuItem('PoleCategories', '', 'info', '/pole-categories'),
         new MenuItem('Poles', '', 'info', '/poles'),
         new MenuItem('Lines', '', 'info', '/lines'),
+        new MenuItem('Tenants', 'Pages.Tenants', 'business', '/tenants'),
         new MenuItem('About', '', 'info', '/about'),
 
         // new MenuItem('MultiLevelMenu', '', 'menu', '', [

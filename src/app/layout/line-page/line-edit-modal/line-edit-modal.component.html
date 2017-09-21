@@ -1,6 +1,6 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">{{modalTitle}}</h4>
+    <h4 class="modal-title">{{modalTitle|translate|async}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -9,48 +9,48 @@
   <div class="modal-body">
     <form role="form">
       <div [formGroup]="lineDetailsForm" class="form-group" [ngClass]="validatedFormClass(code)">
-        <label> Code </label>
+        <label> {{'Code'|translate|async}} </label>
         <input name="code" formControlName="code" [(ngModel)]="selectedLine.code" type="text" class="form-control" id="code">
         <div class="form-control-feedback" *ngIf="code.invalid && code.dirty">
-          Field is invalid
+          {{'FieldIsInvalid'|translate|async}}
         </div>
       </div>
 
       <div [formGroup]="lineDetailsForm" class="form-group" [ngClass]="validatedFormClass(beginPoleId)">
-        <label>End Pole</label>
+        <label>{{'BeginPole'|translate|async}}</label>
         <select name="beginPoleId" formControlName="beginPoleId" [(ngModel)]="selectedLine.beginPoleId" type="text" class="form-control"
           id="beginPoleId">
             <option *ngFor="let pole of poleList" value="{{pole.id}}">{{pole.name}}</option>
             </select>
         <div class="form-control-feedback" *ngIf="beginPoleId.invalid && beginPoleId.dirty">
-          Field is invalid
+          {{'FieldIsInvalid'|translate|async}}
         </div>
       </div>
 
       <div [formGroup]="lineDetailsForm" class="form-group" [ngClass]="validatedFormClass(endPoleId)">
-        <label>End Pole</label>
+        <label>{{'EndPole'|translate|async}}</label>
         <select name="endPoleId" formControlName="endPoleId" [(ngModel)]="selectedLine.endPoleId" type="text" class="form-control"
           id="endPoleId">
           <option *ngFor="let pole of poleList" value="{{pole.id}}">{{pole.name}}</option>
           </select>
         <div class="form-control-feedback" *ngIf="endPoleId.invalid && endPoleId.dirty">
-          Field is invalid
+          {{'FieldIsInvalid'|translate|async}}
         </div>
       </div>
 
       <div [formGroup]="lineDetailsForm" class="form-group" [ngClass]="validatedFormClass(description)">
-        <label>Description</label>
+        <label>{{'Description'|translate|async}}</label>
         <input name="description" formControlName="description" [(ngModel)]="selectedLine.description" type="text" class="form-control"
           id="description">
         <div class="form-control-feedback" *ngIf="description.invalid && description.dirty">
-          Field is invalid
+          {{'FieldIsInvalid'|translate|async}}
         </div>
       </div>
     </form>
   </div>
 
   <div class="modal-footer">
-    <button [disabled]="!isValidForm" type="button" class="btn btn-primary" (click)="submit.emit(selectedLine);c('Close click')">Submit</button>
-    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+    <button [disabled]="!isValidForm" type="button" class="btn btn-primary" (click)="submit.emit(selectedLine);c('Close click')">{{'Submit'|translate|async}}</button>
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">{{'Close'|translate|async}}</button>
   </div>
 </ng-template>

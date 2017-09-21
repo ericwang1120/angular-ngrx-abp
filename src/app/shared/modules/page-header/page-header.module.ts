@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { PageHeaderComponent } from './page-header.component';
+import { CoreModule } from '../../../core/utilities/pipes/core.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        CoreModule
     ],
     declarations: [PageHeaderComponent],
     exports: [PageHeaderComponent]
